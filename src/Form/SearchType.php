@@ -31,7 +31,7 @@ class SearchType extends AbstractType
                 'choice_label' => 'label',
                 'query_builder' => function(CategoryRepository $categoryRepository) {
                     return $categoryRepository->createQueryBuilder('c')
-                        ->orderBy('c.label', 'ASC');
+                        ->orderBy('c.label');
                 }
             ])
         ;

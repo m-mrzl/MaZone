@@ -15,28 +15,9 @@
                 <div class="row ">
                     <!-- formulaire -->
                     <div class=" col-9 col-lg-3 mx-5 mb-3">
-                        <form action="#" method="get" class="bg-white px-5 py-4 rounded">
-                            <p >Votre recherche :</p>
-                            <div class="input-group mb-3 mr-5">
-                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                    <option selected>Département</option>
-                                    {% for province in provinces %}
-                                    <option value="1">{{ province.provinceName }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="input-group mb-3 mr-5">
-                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                    <option selected>Catégories</option>
-                                    {% for category in categories %}
-                                    <option value="1">{{ category.label|slice(0, 10) }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="input-group  mx-auto">
-                                <button type="submit" class="btn btn-secondary">Valider</button>
-                            </div>
-                        </form>
+                        {{ form_start(form) }}
+                            <input type="submit" value="Envoyer" class="btn btn-primary">
+                        {{ form_end(form) }}
                     </div>
                     <!-- text de présentation -->
                     <div class=" col-lg-6 d-flex d-none d-lg-block ">
@@ -62,10 +43,6 @@
                     </div>
                 </div>
             </div>
-
-            {{ form_start(form) }}
-            <input type="submit" value="Envoyer" class="btn btn-primary">
-            {{ form_end(form) }}
 
             <!-- article en tete -->
             <div class="row text-center d-flex justify-content-center pt-4">
