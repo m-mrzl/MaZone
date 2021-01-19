@@ -36,7 +36,9 @@ final class ProductFactory extends ModelFactory
             'productPicture' => 'https://picsum.photos/seed/post-' . rand(0,500) . '/750/300',
             'price' => self::faker()->randomFloat(2, 0, 500),
             'stock' => self::faker()->randomDigit,
-            'createdAt' => self::faker()->dateTimeBetween('-3 years', 'now', 'Europe/Paris')
+            'createdAt' => self::faker()->dateTimeBetween('-3 years', 'now', 'Europe/Paris'),
+            'category' => CategoryFactory::random(),
+            'shop' => ShopFactory::random(),
         ];
     }
 

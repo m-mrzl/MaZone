@@ -31,11 +31,13 @@ final class ShopFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'shopName' => self::faker()->company(),
+            'shopName' => self::faker()->company,
             'shopDescription' => self::faker()->text($maxNbChars = 1000),
             'shopPicture' => 'https://picsum.photos/seed/post-' . rand(0,500) . '/750/300',
-            'shopPhone' => self::faker()->phoneNumber(),
-            'shopAddress' => self::faker()->streetAddress(),
+            'shopPhone' => self::faker()->phoneNumber,
+            'shopAddress' => self::faker()->streetAddress,
+            'province' => ProvinceFactory::random(),
+            'user' => UserFactory::random(),
         ];
     }
 
