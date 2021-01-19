@@ -2,8 +2,145 @@
 
 {% block title %}Home!{% endblock %}
 
+{% block nav %}
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
 
+        <!------------------------------------------ corp de page ------------------------------------------>
+        <main class="" >
+
+            <div class="bg-dark py-5 ">
+                <div class="row ">
+                    <!-- formulaire -->
+                    <div class=" col-9 col-lg-3 mx-5 mb-3">
+                        <form action="#" method="get" class="bg-white px-5 py-4 rounded">
+                            <p >Votre recherche</p>
+                            <div class="input-group mb-3 mr-5">
+                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                    <option selected>Département</option>
+                                    {% for province in provinces %}
+                                    <option value="1">{{ province.provinceName }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="input-group mb-3 mr-5">
+                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                    <option selected>Catégories</option>
+                                    {% for category in categories %}
+                                    <option value="1">{{ category.label|slice(0, 10) }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="input-group  mx-auto">
+                                <button type="button" class="btn btn-secondary">valider</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- text de présentation -->
+                    <div class=" col-lg-6 d-flex d-none d-lg-block ">
+                        <p class="text-start text-white ">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex maxime enim temporibus necessitatibus repudiandae voluptatum aliquam animi? Numquam aut, itaque a dicta ullam veritatis ipsa quo, quae sed facere quas repudiandae assumenda ex, nobis expedita voluptatem totam ad nesciunt nihil.
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis maiores nesciunt, laboriosam omnis pariatur ad quos nobis? Sapiente voluptatum sed sint rerum libero autem ab aliquam debitis cumque nihil corrupti, facere veritatis quasi harum magni qui quam ullam in quisquam!
+                        </p>
+                    </div>
+                    <div class="d-lg-none ">
+                        <div class="col-4 mx-auto">
+                            <button class="btn btn-secondary " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Information
+                            </button>
+                        </div>
+                        <div class="collapse col-10 mx-auto " id="collapseExample">
+                            <div class="card card-body bg-dark">
+                                <p class="text-start text-white">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex maxime enim temporibus necessitatibus repudiandae voluptatum aliquam animi? Numquam aut, itaque a dicta ullam veritatis ipsa quo, quae sed facere quas repudiandae assumenda ex, nobis expedita voluptatem totam ad nesciunt nihil.
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis maiores nesciunt, laboriosam omnis pariatur ad quos nobis? Sapiente voluptatum sed sint rerum libero autem ab aliquam debitis cumque nihil corrupti, facere veritatis quasi harum magni qui quam ullam in quisquam!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- article en tete -->
+            <div class="row text-center d-flex justify-content-center pt-4">
+                {% for product in products|slice(0, 5) %}
+                <div class="col-10 col-lg-2 mb-3 ">
+                    <div class="card">
+                        <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.productName }}</h5>
+                            <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
+                            <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
+                            <a href="#" class="btn btn-primary">Voir le produit</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!--  section Category et region -->
+            <section class="row d-flex justify-content-center">
+
+                <!-- 7 category-->
+                <div class="col-lg-4 col-10">
+                    <h3 class="text-center mt-5 mb-4">Categories</h3>
+                    <div class="row container-flex ">
+                        {% for category in categories %}
+                        <div class="d-grid gap-5 col-3 mx-auto mb-2">
+                            <a class="btn btn-primary" href="#">{{ category.label|slice(0, 5) }}</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- 3 region -->
+                <div class="col-lg-4 col-10">
+                    <h3 class="text-center mt-5 mb-4">Département</h3>
+                    {% for province in provinces %}
+                    <div class="d-grid gap-2 mb-2 ">
+                        <a class="btn btn-primary" href="#">{{ province.provinceName }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- carousel de produits -->
+            <article class="row d-flex justify-content-center my-4">
+                <div id="carouselExampleControls" class="carousel slide col-10 col-lg-6 mt-4 " data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for product in products|slice(0, 5) %}
+                        <div class="carousel-item active">
+                            <div class="card">
+                                <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.productName }}</h5>
+                                    <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
+                                    <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
+                                    <a href="#" class="btn btn-primary">Voir le produit</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+            </article>
+
+        </main>
 
 
+
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
 {% endblock %}

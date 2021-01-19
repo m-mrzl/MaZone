@@ -1,0 +1,37 @@
+
+<header >
+
+    <!-- NAVBAR PC -->
+    <nav class="navbar">
+        <div class="container pt-1">
+            <div class="d-none d-lg-block">
+                <img  src="{{ asset('images/logo.svg') }}"  alt="LOGO" width="70"  >
+
+            </div>
+            <h1 class="d-none d-lg-block text-center" >Ma Zone</h1>
+            <div class="d-none d-lg-block pt-2">
+                <a class="btn btn-outline-dark " href="#">Connexion</a>
+                <a class="btn btn-outline-dark " href="#">Inscription</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- NAVBAR portable -->
+    <nav>
+        <nav class="navbar ">
+            <div class="container-fluid d-lg-none">
+                <h2 class="d-lg-none ">Ma Zone</h2>
+                <button class="navbar-toggler " data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="container" onclick="Xnav(this)">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </button>
+            </div>
+            <div class="collapse d-lg-none py-4" id="navbarToggleExternalContent">
+                <div class=" mx-5 px-4 mt-4">
+                    <a class="btn btn-outline-dark " href="#">Connexion</a>
+                    <a class="btn btn-outline-dark " href="#">Inscription</a>
+                </div>
+        </nav>
