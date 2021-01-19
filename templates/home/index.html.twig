@@ -16,7 +16,7 @@
                     <!-- formulaire -->
                     <div class=" col-9 col-lg-3 mx-5 mb-3">
                         <form action="#" method="get" class="bg-white px-5 py-4 rounded">
-                            <p >Votre recherche</p>
+                            <p >Votre recherche :</p>
                             <div class="input-group mb-3 mr-5">
                                 <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
                                     <option selected>Département</option>
@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                             <div class="input-group  mx-auto">
-                                <button type="button" class="btn btn-secondary">valider</button>
+                                <button type="submit" class="btn btn-secondary">Valider</button>
                             </div>
                         </form>
                     </div>
@@ -62,6 +62,10 @@
                     </div>
                 </div>
             </div>
+
+            {{ form_start(form) }}
+            <input type="submit" value="Envoyer" class="btn btn-primary">
+            {{ form_end(form) }}
 
             <!-- article en tete -->
             <div class="row text-center d-flex justify-content-center pt-4">
@@ -111,7 +115,7 @@
                 <div id="carouselExampleControls" class="carousel slide col-10 col-lg-6 mt-4 " data-bs-ride="carousel">
                     <div class="carousel-inner">
                         {% for product in products|slice(0, 5) %}
-                        <div class="carousel-item active">
+                        <div class="carousel-item {%if loop.first%} active {%endif%}">
                             <div class="card">
                                 <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
                                 <div class="card-body">

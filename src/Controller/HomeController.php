@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\SearchType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\ProvinceRepository;
@@ -21,10 +22,12 @@ class HomeController extends AbstractController
         $provinces = $provinceRepository->findAll();
 
         // dd($products);
+        $form = $this->createForm(SearchType::class);
         return $this->render('home/index.html.twig', [
             'products' => $products,
             'categories' => $categories,
             'provinces' => $provinces,
+            'form' => $form->createView(),
             'controller_name' => 'HomeController',
         ]);
     }
