@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductDetailController!{% endblock %}
+
+{% block body %}
+    <main>
+
+        <div class="card-header text-center">
+            Proposé par : <a href="#">{{ productDetail.shop.shopName }}</a>
+        </div>
+
+        <div class="container d-flex justify-content-center">
+
+            <div class="row">
+
+                <div class="col-10 col-lg-4 my-5">
+                    <img src="{{ productDetail.productPicture }}" class="rounded float-start img" alt="caddy">
+                </div>
+
+                <div class="col-10 col-lg-8 my-5">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ productDetail.productName }}</h5>
+                            <span class="badge bg-success">{{ productDetail.category.label }}</span>
+                            <p class="card-text px-5 py-3">Description du produit :
+                                {{ productDetail.productDescription }}
+                            </p>
+                            <div class="row">
+                                <div class="col-6">Prix : {{ productDetail.price }} € </div>
+                                <div class="col-6">Il reste {{ productDetail.stock }} produit(s) en stock.</div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--infos producteur-->
+
+        <div class="container py-3 mb-5 d-flex justify-content-center">
+            <div class="row">
+
+                <div class="col">
+                    <h2 class="mb-4">Commentaires</h2>
+                    {% for comment in comments %}
+                        <h4>Par {{ comment.user.firstname }} {{ comment.user.lastname }} le {{ comment.createdAt|date("d/m/y") }}</h4>
+                        <p>{{ comment.content }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="col">
+                    <h2>Nos Coordonnées :</h2>
+                    <address>
+                        {{ productDetail.shop.shopAddress }}<br>
+                        Ouvert 7j/j de 09h à 13h et de 14h à 20h <br>
+                        <span>{{ productDetail.shop.shopPhone }}</span><br>
+                        <span>{{ productDetail.shop.user.email }}</span>
+                    </address>
+                </div>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

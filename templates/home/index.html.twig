@@ -56,7 +56,7 @@
                             <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
                             <span class="badge bg-success">{{ product.province.provinceName|slice(0, 10) }}</span>
                             <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
-                            <a href="#" class="btn btn-primary">Voir le produit</a>
+                            <a href="{{ path('product.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
                         </div>
                     </div>
                 </div>
@@ -97,11 +97,13 @@
                         <div class="carousel-item {%if loop.first%} active {%endif%}">
                             <div class="card">
                                 <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
-                                <div class="card-body">
+                                <div class="card-body ">
                                     <h5 class="card-title">{{ product.productName }}</h5>
                                     <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
                                     <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
-                                    <a href="#" class="btn btn-primary">Voir le produit</a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ path('product.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

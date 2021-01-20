@@ -27,7 +27,7 @@ class AppFixtures extends Fixture
 
         ProductFactory::new()->createMany(100);
 
-        CommentFactory::new()->createMany(40);
+        CommentFactory::new()->createMany(400);
 
         $manager->flush();
     }
