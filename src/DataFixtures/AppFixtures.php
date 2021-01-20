@@ -25,7 +25,7 @@ class AppFixtures extends Fixture
 
         ShopFactory::new()->createMany(10);
 
-        ProductFactory::new()->createMany(30);
+        ProductFactory::new()->createMany(100);
 
         CommentFactory::new()->createMany(40);
 

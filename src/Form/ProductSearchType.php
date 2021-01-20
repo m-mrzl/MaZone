@@ -11,13 +11,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SearchType extends AbstractType
+class ProductSearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('departement', EntityType::class, [
-                'label' => 'Département :',
+                'label' => 'Département',
                 'class' => Province::class,
                 'choice_label' => 'provinceName',
                 'query_builder' => function(ProvinceRepository $provinceRepository) {
@@ -26,7 +26,7 @@ class SearchType extends AbstractType
                 }
             ])
             ->add('categorie', EntityType::class, [
-                'label' => 'Catégorie :',
+                'label' => 'Catégorie',
                 'class' => Category::class,
                 'choice_label' => 'label',
                 'query_builder' => function(CategoryRepository $categoryRepository) {

@@ -29,9 +29,15 @@ class Province
      */
     private $shops;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="province")
+     */
+    private $products;
+
     public function __construct()
     {
         $this->shops = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,36 @@ class Province
             // set the owning side to null (unless already changed)
             if ($shop->getProvince() === $this) {
                 $shop->setProvince(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setProvince($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getProvince() === $this) {
+                $product->setProvince(null);
             }
         }
 

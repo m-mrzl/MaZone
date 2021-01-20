@@ -66,6 +66,12 @@ class Product
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Province::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $province;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -198,6 +204,18 @@ class Product
                 $comment->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProvince(): ?Province
+    {
+        return $this->province;
+    }
+
+    public function setProvince(?Province $province): self
+    {
+        $this->province = $province;
 
         return $this;
     }

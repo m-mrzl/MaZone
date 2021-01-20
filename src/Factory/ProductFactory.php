@@ -39,6 +39,7 @@ final class ProductFactory extends ModelFactory
             'createdAt' => self::faker()->dateTimeBetween('-3 years', 'now', 'Europe/Paris'),
             'category' => CategoryFactory::random(),
             'shop' => ShopFactory::random(),
+            'province' => ProvinceFactory::random(),
         ];
     }
 
