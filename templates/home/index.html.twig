@@ -15,6 +15,7 @@
                 <div class="row ">
                     <!-- formulaire -->
                     <div class=" col-9 col-lg-3 mx-5 mb-3 text-white">
+                        <h3>Votre recherche</h3>
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
                             <input type="submit" value="Envoyer" class="btn btn-primary mt-2">
@@ -53,8 +54,8 @@
                         <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.productName }}</h5>
-                            <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
-                            <span class="badge bg-success">{{ product.province.provinceName|slice(0, 10) }}</span>
+                            <a href="{{ path('category.index', {'id':product.category.id}) }}" class="badge bg-success text-decoration-none">{{ product.category.label|slice(0, 10) }}</a>
+                            <a href="{{ path('province.index', {'id':product.province.id}) }}" class="badge bg-success text-decoration-none">{{ product.province.provinceName|slice(0, 10) }}</a>
                             <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
                             <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
                         </div>
@@ -83,7 +84,7 @@
                     <h3 class="text-center mt-5 mb-4">Département</h3>
                     {% for province in provinces %}
                     <div class="d-grid gap-2 mb-2 ">
-                        <a class="btn btn-primary" href="#">{{ province.provinceName }}</a>
+                        <a class="btn btn-primary" href="{{ path('province.index', {'id':province.id}) }}">{{ province.provinceName }}</a>
                     </div>
                     {% endfor %}
                 </div>
@@ -98,9 +99,12 @@
                             <div class="card">
                                 <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
                                 <div class="card-body ">
-                                    <h5 class="card-title">{{ product.productName }}</h5>
-                                    <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
-                                    <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
+                                    <h5 class="card-title text-center">{{ product.productName }}</h5>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ path('category.index', {'id':product.category.id}) }}" class="badge bg-success text-decoration-none me-2">{{ product.category.label|slice(0, 10) }}</a>
+                                        <a href="{{ path('province.index', {'id':product.province.id}) }}" class="badge bg-success text-decoration-none">{{ product.province.provinceName|slice(0, 10) }}</a>
+                                    </div>
+                                    <p class="card-text text-center">{{ product.productDescription|slice(0, 100) }}...</p>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
                                     </div>

@@ -21,7 +21,8 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <h5 class="card-title">{{ productDetail.productName }}</h5>
-                            <span class="badge bg-success">{{ productDetail.category.label }}</span>
+                            <a href="{{ path('category.index', {'id':productDetail.category.id}) }}" class="badge bg-success text-decoration-none">{{ productDetail.category.label }}</a>
+                            <a href="{{ path('province.index', {'id':productDetail.province.id}) }}" class="badge bg-success text-decoration-none">{{ productDetail.province.provinceName }}</a>
                             <p class="card-text px-5 py-3">Description du produit :
                                 {{ productDetail.productDescription }}
                             </p>

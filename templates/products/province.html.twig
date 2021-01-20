@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégorie{% endblock %}
+{% block title %}Département{% endblock %}
 
 {% block body %}
-
-    <p>{{ categoryName }}</p>
+    <p>{{ provinceName }}</p>
 
     <div class="col-9 col-lg-3 mx-5 mb-3 mx-auto bg-dark text-white p-3 rounded mt-2">
         <h3>Votre recherche</h3>
@@ -17,14 +16,14 @@
     </div>
 
     <div class="row text-center d-flex justify-content-center pt-4">
-        {% for productByCategory in productsByCategory %}
+        {% for productByProvince in productsByProvince %}
             <div class="col-10 col-lg-2 mb-3">
                 <div class="card">
-                    <img src="{{ productByCategory.productPicture }}" class="card-img-top" alt="{{ productByCategory.productName }}">
+                    <img src="{{ productByProvince.productPicture }}" class="card-img-top" alt="{{ productByProvince.productName }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ productByCategory.productName }}</h5>
-                        <p class="card-text">{{ productByCategory.productDescription|slice(0, 100) }}...</p>
-                        <a href="{{ path('product.detail.index', {'id':productByCategory.id}) }}" class="btn btn-primary">Voir le produit</a>
+                        <h5 class="card-title">{{ productByProvince.productName }}</h5>
+                        <p class="card-text">{{ productByProvince.productDescription|slice(0, 100) }}...</p>
+                        <a href="{{ path('product.detail.index', {'id':productByProvince.id}) }}" class="btn btn-primary">Voir le produit</a>
                     </div>
                 </div>
             </div>
