@@ -13,15 +13,17 @@
             <div class="d-none d-lg-block pt-2">
                 <a class="btn btn-outline-dark " href="#">Connexion</a>
                 <a class="btn btn-outline-dark " href="#">Inscription</a>
+                <a class="btn btn-outline-dark " href="#"><i class="bi bi-cart2"></i></a>
             </div>
         </div>
     </nav>
 
     <!-- NAVBAR portable -->
-    <nav>
+
         <nav class="navbar ">
             <div class="container-fluid d-lg-none">
                 <a href="{{ path('home.index') }}" class="d-lg-none d-block text-center h1 text-decoration-none text-dark" >Ma Zone</a>
+                <a class="btn btn-outline-dark " href="#"><i class="bi bi-cart2"></i></a>
                 <button class="navbar-toggler " data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="container" onclick="Xnav(this)">
                         <div class="bar1"></div>
@@ -31,8 +33,9 @@
                 </button>
             </div>
             <div class="collapse d-lg-none py-4" id="navbarToggleExternalContent">
-                <div class=" mx-5 px-4 mt-4">
+                <div class=" mx-5 px-3 mt-4">
                     <a class="btn btn-outline-dark " href="#">Connexion</a>
                     <a class="btn btn-outline-dark " href="#">Inscription</a>
                 </div>
+            </div>
         </nav>
