@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produits recherchés{% endblock %}
+{% block title %}Catégorie{% endblock %}
 
 {% block body %}
     <div class="col-9 col-lg-3 mx-5 mb-3 mx-auto bg-dark text-white p-3 rounded mt-2">
@@ -13,19 +13,15 @@
         {{ form_end(form) }}
     </div>
 
-    <p>{{ provinceName }}</p>
-    <p>{{ categoryName }}</p>
-
-
     <div class="row text-center d-flex justify-content-center pt-4">
-        {% for product in products %}
+        {% for productByCategory in productsByCategory %}
             <div class="col-10 col-lg-2 mb-3">
                 <div class="card">
-                    <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
+                    <img src="{{ productByCategory.productPicture }}" class="card-img-top" alt="{{ productByCategory.productName }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ product.productName }}</h5>
-                        <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
-                        <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                        <h5 class="card-title">{{ productByCategory.productName }}</h5>
+                        <p class="card-text">{{ productByCategory.productDescription|slice(0, 100) }}...</p>
+                        <a href="{{ path('product.detail.index', {'id':productByCategory.id}) }}" class="btn btn-primary">Voir le produit</a>
                     </div>
                 </div>
             </div>

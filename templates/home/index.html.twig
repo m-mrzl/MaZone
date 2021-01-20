@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home!{% endblock %}
+{% block title %}Page d'accueil{% endblock %}
 
 {% block nav %}
     {{ parent() }}
@@ -56,7 +56,7 @@
                             <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
                             <span class="badge bg-success">{{ product.province.provinceName|slice(0, 10) }}</span>
                             <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
-                            <a href="{{ path('product.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                            <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <div class="row container-flex ">
                         {% for category in categories %}
                         <div class="d-grid gap-5 col-3 mx-auto mb-2">
-                            <a class="btn btn-primary" href="#">{{ category.label|slice(0, 5) }}</a>
+                            <a class="btn btn-primary" href="{{ path('category.index', {'id':category.id}) }}">{{ category.label|slice(0, 5) }}</a>
                         </div>
                         {% endfor %}
                     </div>
@@ -102,7 +102,7 @@
                                     <span class="badge bg-success">{{ product.category.label|slice(0, 10) }}</span>
                                     <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ path('product.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                                        <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
                                     </div>
                                 </div>
                             </div>

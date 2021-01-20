@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductDetailController extends AbstractController
 {
     /**
-     * @Route("/product/detail/{id<\d+>}", name="product.index")
+     * @Route("/product/detail/{id<\d+>}", name="product.detail.index")
      */
     public function index(int $id, ProductRepository $productRepository, CommentRepository $commentRepository): Response
     {
