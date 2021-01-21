@@ -46,7 +46,7 @@ class ProductsSearchController extends AbstractController
 
         }
 
-
+        // Affichage du template recherche produit par le forulaire
         return $this->render('products/index.html.twig', [
             'controller_name' => 'ProductsSearchController',
             'products' => $products,

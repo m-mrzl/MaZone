@@ -20,18 +20,18 @@ class ProvinceController extends AbstractController
         $productsByProvince = $productRepository->findBy([
             'province' => $id,
         ]);
-
+        // Création de l'objet ProductSearchType (formulaire)
         $form = $this->createForm(ProductSearchType::class, null, [
             'action' => $this->generateUrl('products.index')
         ]);
-
+        // requête des produit par la province
         $province = $provinceRepository->findBy([
             'id' => $id
         ]);
 
         $provinceName = $province[0]->getProvinceName();
 
-
+        // Affichage du template produit province
         return $this->render('products/province.html.twig', [
             'controller_name' => 'ProvinceController',
             'productsByProvince' => $productsByProvince,

@@ -20,7 +20,7 @@ class HomeController extends AbstractController
         $products = $productRepository->findAll();
         $categories = $categoryRepository->findAll();
         $provinces = $provinceRepository->findAll();
-
+        // Création de l'objet ProductSearchType (formulaire)
         $form = $this->createForm(ProductSearchType::class, null, [
             'action' => $this->generateUrl('products.index')
         ]);

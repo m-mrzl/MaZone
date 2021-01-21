@@ -15,13 +15,16 @@ class ProductDetailController extends AbstractController
      */
     public function index(int $id, ProductRepository $productRepository, CommentRepository $commentRepository): Response
     {
-
+        // requête de produit par id
         $productDetail = $productRepository->find($id);
 
+        // requête des commentaires par l'id du produit
         $comments = $commentRepository->findBy([
             'product' => $id
         ]);
 
+
+        // Affichage du templates produit détail
         return $this->render('products/product.detail.html.twig', [
             'controller_name' => 'ProductDetailController',
             'productDetail' => $productDetail,

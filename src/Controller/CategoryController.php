@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
         $productsByCategory = $productRepository->findBy([
             'category' => $id,
         ]);
-
+        // Création de l'objet ProductSearchType (formulaire)
         $form = $this->createForm(ProductSearchType::class, null, [
             'action' => $this->generateUrl('products.index')
         ]);
@@ -32,7 +32,7 @@ class CategoryController extends AbstractController
         $categoryName = $category[0]->getLabel();
 
 
-
+        // Affichage du template produit category
         return $this->render('products/category.html.twig', [
             'controller_name' => 'CategoryController',
             'productsByCategory' => $productsByCategory,

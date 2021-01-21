@@ -8,7 +8,7 @@
 
 {% block body %}
 
-        <!------------------------------------------ corp de page ------------------------------------------>
+        <!------------------------------------------ corp de page home/index ------------------------------------------>
         <main class="" >
 
             <div class="bg-dark py-5 ">
@@ -25,7 +25,8 @@
                         </div>
                         {{ form_end(form) }}
                     </div>
-                    <!-- text de présentation -->
+
+                    <!-- text de présentation du site -->
                     <div class=" col-lg-6 d-flex d-none d-lg-block ">
                         <p class="text-start text-white ">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex maxime enim temporibus necessitatibus repudiandae voluptatum aliquam animi? Numquam aut, itaque a dicta ullam veritatis ipsa quo, quae sed facere quas repudiandae assumenda ex, nobis expedita voluptatem totam ad nesciunt nihil.
@@ -71,7 +72,7 @@
             <!--  section Category et region -->
             <section class="row d-flex justify-content-center">
 
-                <!-- 7 category-->
+                <!-- 7 categories-->
                 <div class="col-lg-4 col-10">
                     <h3 class="text-center mt-5 mb-4">Categories</h3>
                     <div class="row container-flex ">
@@ -83,7 +84,7 @@
                     </div>
                 </div>
 
-                <!-- 3 region -->
+                <!-- 3 département -->
                 <div class="col-lg-4 col-10">
                     <h3 class="text-center mt-5 mb-4">Département</h3>
                     {% for province in provinces %}
