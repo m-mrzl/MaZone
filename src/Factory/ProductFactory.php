@@ -31,6 +31,7 @@ final class ProductFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
+            // Création des fakers
             'productName' => self::faker()->text($maxNbChars = 50),
             'productDescription' => self::faker()->text($maxNbChars = 1000),
             'productPicture' => 'https://picsum.photos/seed/post-' . rand(0,500) . '/750/300',

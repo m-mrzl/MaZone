@@ -30,6 +30,7 @@ final class ShopFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        // Création des fakers
         return [
             'shopName' => self::faker()->company,
             'shopDescription' => self::faker()->text($maxNbChars = 1000),

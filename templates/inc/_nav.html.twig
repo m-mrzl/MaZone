@@ -17,7 +17,7 @@
                         <a href="{{ path('security.logout') }}" class="btn btn-outline-dark ">Logout</a>
                     {% else %}
                         <a class="btn btn-outline-dark " href="{{ path('security.login') }}">Connexion</a>
-                        <a class="btn btn-outline-dark " href="#">Inscription</a>
+                        <a class="btn btn-outline-dark " href="{{ path('signup.index') }}">Inscription</a>
                 {% endif %}
 
                 <a class="btn btn-outline-dark " href="#"><i class="bi bi-cart2"></i></a>
@@ -47,7 +47,7 @@
                         <a href="{{ path('security.logout') }}" class="btn btn-outline-dark ">Logout</a>
                     {% else %}
                         <a class="btn btn-outline-dark " href="{{ path('security.login') }}">Connexion</a>
-                        <a class="btn btn-outline-dark " href="#">Inscription</a>
+                        <a class="btn btn-outline-dark " href={{ path('signup.index') }}>Inscription</a>
                     {% endif %}
                     <a class="btn btn-outline-dark " href="#"><i class="bi bi-cart2"></i></a>
                 </div>

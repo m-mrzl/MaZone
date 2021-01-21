@@ -28,16 +28,16 @@ class UserController extends AbstractController
      */
     public function index(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
-        // Création de l'objet ProductSearchType (formulaire)
+        // Création de l'objet UserType (formulaire)
         $form = $this->createForm(UserType::class);
 
-        // Injection des données de la requête HTTP (du formulaire) dans l'objet ProductSearchType
+        // Injection des données de la requête HTTP (du formulaire) dans l'objet UserType
         $form->handleRequest($request);
 
         $user = null;
 
         // Si le formulaire est soumis et valide (correctement rempli)
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $user = $form->getData();
 
@@ -54,6 +54,8 @@ class UserController extends AbstractController
             $this->manager->persist($user);
             $this->manager->flush();
 
+            // message flash
+            $this->addFlash('success', ' Votre compte a été créé avec succès. ');
             return $this->redirectToRoute('security.login');
 
         }

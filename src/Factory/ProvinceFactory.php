@@ -31,6 +31,7 @@ final class ProvinceFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
+            // Création des fakers
             'provinceName' => self::faker()->city()
         ];
     }
