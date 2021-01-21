@@ -45,6 +45,7 @@ final class UserFactory extends ModelFactory
             'userAddress' => self::faker()->streetAddress,
             'postalCode' => self::faker()->postcode,
             'userPhone' => self::faker()->phoneNumber,
+            'createdAt' => self::faker()->dateTimeBetween('-3 years', 'now', 'Europe/Paris'),
         ];
     }
 

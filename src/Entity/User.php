@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeZone;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -11,6 +13,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    public function __construct()
+    {
+
+        // Initialisation de la propriété createdAt
+        $this->createdAt = new \DateTime('now', new DateTimeZone('Europe/Paris'));
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -69,6 +78,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
      */
     private $comment;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -246,6 +260,18 @@ class User implements UserInterface
                 $comment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
