@@ -19,6 +19,12 @@ class AppFixtures extends Fixture
         // $manager->persist($product);
         UserFactory::new()->createMany(40);
 
+        UserFactory::new()->create([
+            'roles' => ['ROLE_ADMIN'],
+            'password' => 'admin',
+            'email' => 'admin@admin.com',
+        ]);
+
         CategoryFactory::new()->createMany(7);
 
         ProvinceFactory::new()->createMany(3);

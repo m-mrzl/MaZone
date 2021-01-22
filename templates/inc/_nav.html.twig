@@ -14,7 +14,10 @@
             <a href="{{ path('home.index') }}" class="d-none d-lg-block text-center h1 text-decoration-none text-dark" >Ma Zone</a>
             <div class="d-none d-lg-block pt-2">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="{{ path('security.logout') }}" class="btn btn-outline-dark ">Logout</a>
+                        <a href="{{ path('security.logout') }}" class="btn btn-outline-dark ">Déconnexion</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin.index') }}" class="btn btn-outline-dark ">Administration</a>
+                    {% endif %}
                     {% else %}
                         <a class="btn btn-outline-dark " href="{{ path('security.login') }}">Connexion</a>
                         <a class="btn btn-outline-dark " href="{{ path('signup.index') }}">Inscription</a>
@@ -44,7 +47,10 @@
             <div class="collapse d-lg-none py-4" id="navbarToggleExternalContent">
                 <div class=" mx-5 px-3 mt-4">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="{{ path('security.logout') }}" class="btn btn-outline-dark ">Logout</a>
+                        <a href="{{ path('security.logout') }}" class="btn btn-outline-dark ">Déconnexion</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('admin.index') }}" class="btn btn-outline-dark ">Administration</a>
+                        {% endif %}
                     {% else %}
                         <a class="btn btn-outline-dark " href="{{ path('security.login') }}">Connexion</a>
                         <a class="btn btn-outline-dark " href={{ path('signup.index') }}>Inscription</a>
@@ -53,3 +59,4 @@
                 </div>
             </div>
         </nav>
+</header>
