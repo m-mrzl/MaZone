@@ -4,21 +4,17 @@
 
 {% block body %}
     <main>
-
-        <div class="card-header text-center">
-            Proposé par : <a href="#">{{ productDetail.shop.shopName }}</a>
-        </div>
-
         <div class="container d-flex justify-content-center">
-
             <div class="row">
-
                 <div class="col-10 col-lg-4 my-5">
-                    <img src="{{ productDetail.productPicture }}" class="rounded float-start img" alt="caddy">
+                    <img src="{{ productDetail.productPicture }}" class="rounded  img-thumbnail " alt="caddy">
                 </div>
 
                 <div class="col-10 col-lg-8 my-5">
                     <div class="card text-center">
+                        <div class="card-header text-center">
+                            Proposé par : <a href="#">{{ productDetail.shop.shopName }}</a>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ productDetail.productName }}</h5>
                             <a href="{{ path('category.index', {'id':productDetail.category.id}) }}" class="badge bg-success text-decoration-none">{{ productDetail.category.label }}</a>
@@ -31,7 +27,6 @@
                                 <div class="col-6">Il reste {{ productDetail.stock }} produit(s) en stock.</div>
                             </div>
                         </div>
-
                         <div class="card-footer">
                             <a href="#" class="btn btn-primary">Ajouter au panier</a>
                         </div>
