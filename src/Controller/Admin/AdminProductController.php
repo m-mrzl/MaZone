@@ -39,13 +39,20 @@ class AdminProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // récupérer le shopName  ///
+            $shopName = $this->getUser()->getShop()->getShopName();
+
+            // récupérer le provinceName  ///
+            $provinceName = $this->getUser()->getShop()->getProvince()->getProvinceName();
+
+        // dd($provinceName, $shopName);
+
             $newProduct = $form->getData();
 
-            // $shopId = $this->getUser()->getShop()->getId();
 
             // Persistance en base de données
-            // $this->manager->persist($newProduct);
-            // $this->manager->flush();
+          // $this->manager->persist($newProduct);
+          //$this->manager->flush();
 
             return $this->redirectToRoute('admin.index');
 
@@ -89,6 +96,8 @@ class AdminProductController extends AbstractController
      */
     public function remove(Product $product, EntityManagerInterface $manager)
     {
+
+
         $manager->remove($product);
         $manager->flush();
 
