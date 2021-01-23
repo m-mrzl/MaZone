@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminProductController!{% endblock %}
+
+{% block body %}
+
+    <div clas="row ">
+        <div class="col-10 col-lg-4 mx-5  mt-3 mb-2 mx-auto bg-dark text-white p-3 rounded mt-2">
+            <h3>Nouveau Produit</h3>
+            <div  class="mx-2 ">
+                {{ form_start(form) }}
+            </div>
+            {{ form_widget(form) }}
+            <div class="col-4 mx-auto d-flex justify-content-center ">
+                <input type="submit" value="Envoyer" class="btn btn-secondary mt-3 mx-4 ">
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}
