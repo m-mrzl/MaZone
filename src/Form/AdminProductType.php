@@ -46,7 +46,7 @@ class AdminProductType extends AbstractType
                 ],
             ])
             ->add('stock', IntegerType::class, [
-                'label' => 'Nom du produit',
+                'label' => 'Stock',
                 'constraints' => [
                     new NotBlank()
                 ],
