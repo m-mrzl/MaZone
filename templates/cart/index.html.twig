@@ -44,5 +44,12 @@
             <p>Panier vide</p>
         {% endif %}
     </div>
+    <div class="d-flex justify-content-center mb-3">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="#" class="btn btn-primary">Payez</a>
+        {% else %}
+            <a href="{{ path('security.login') }}" class="btn btn-primary">Payez</a>
+        {% endif %}
+    </div>
 
 {% endblock %}
