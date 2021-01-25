@@ -15,7 +15,6 @@ class User implements UserInterface
 {
     public function __construct()
     {
-
         // Initialisation de la propriété createdAt
         $this->createdAt = new \DateTime('now', new DateTimeZone('Europe/Paris'));
     }

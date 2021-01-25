@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,6 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
+
+    public function __construct()
+    {
+        // Initialisation de la propriété createdAt
+        $this->createdAt = new \DateTime('now', new DateTimeZone('Europe/Paris'));
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

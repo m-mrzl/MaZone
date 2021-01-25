@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Product;
 use App\Repository\ProductRepository;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -21,11 +22,16 @@ use Zenstruck\Foundry\Proxy;
  */
 final class ProductFactory extends ModelFactory
 {
-    public function __construct()
+    /**
+     * @var SluggerInterface
+     */
+    private $slugger;
+
+    public function __construct(SluggerInterface $slugger)
     {
         parent::__construct();
 
-        // TODO inject services if required (https://github.com/zenstruck/foundry#factories-as-services)
+        $this->slugger = $slugger;
     }
 
     protected function getDefaults(): array
@@ -46,10 +52,17 @@ final class ProductFactory extends ModelFactory
 
     protected function initialize(): self
     {
-        // see https://github.com/zenstruck/foundry#initialization
         return $this
-            // ->afterInstantiate(function(Product $product) {})
-        ;
+            ->afterInstantiate(function(Product $product) {
+                // On récupère le titre de l'article
+                $title = $product->getProductName();
+
+                // On sluggifie ce titre avec le slugger
+                $slug = $this->slugger->slug($title);
+
+                // On enregistre ce slug dans le champ slug
+                $product->setSlug($slug);
+            });
     }
 
     protected static function getClass(): string

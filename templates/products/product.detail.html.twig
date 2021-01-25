@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                            <a href="{{ path('cart.add', {'id':productDetail.id}) }}" class="btn btn-primary">Ajouter au panier</a>
                         </div>
                     </div>
                 </div>
@@ -36,6 +36,19 @@
         </div>
 
         <!--infos producteur-->
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <!-- Formulaire d'ajout de commentaire -->
+            <div class="container">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Envoyer" class="btn btn-primary my-3">
+                {{ form_end(form) }}
+            </div>
+        {% else %}
+            <div class="container">
+                <p class="text-center">Pour poster un commentaire, <a href="{{ path('security.login') }}" class="text-dark text-decoration-none">connectez-vous</a> ou <a href="{{ path('signup.index') }}" class="text-dark text-decoration-none">créez un compte</a>.</p>
+            </div>
+        {% endif %}
 
         <div class="container py-3 mb-5 d-flex justify-content-center">
             <div class="row">
