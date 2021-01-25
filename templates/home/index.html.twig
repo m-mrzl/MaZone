@@ -56,7 +56,7 @@
                 {% for product in products|slice(0, 5) %}
                 <div class="col-10 col-lg-2 mb-3 ">
                     <div class="card">
-                        <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
+                        <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top" alt="{{ product.productName }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.productName }}</h5>
                             <a href="{{ path('category.index', {'id':product.category.id}) }}" class="badge bg-success text-decoration-none">{{ product.category.label|slice(0, 10) }}</a>
@@ -102,7 +102,7 @@
                         {% for product in products|slice(0, 10) %}
                         <div class="carousel-item {%if loop.first%} active {%endif%}">
                             <div class="card mb-3">
-                                <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
+                                <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top" alt="{{ product.productName }}">
                                 <div class="card-body ">
                                     <h5 class="card-title text-center">{{ product.productName }}</h5>
                                     <div class="d-flex justify-content-center">

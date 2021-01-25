@@ -29,7 +29,7 @@
                         </li>
                     {% endif %}
                         <li>
-                            <a class="btn btn-outline-dark " href="#"><i class="bi bi-cart2"></i></a>
+                            <a class="btn btn-outline-dark " href="{{ path('cart.index') }}"><i class="bi bi-cart2"></i></a>
                         </li>
                     </ul>
                     <!--  sans Profil   -->
@@ -42,7 +42,7 @@
                                 <a class="nav-link me-3" href="{{ path('signup.index') }}">Inscription</a>
                             </li>
                             <li>
-                                <a class="btn btn-outline-dark " href="#"><i class="bi bi-cart2"></i></a>
+                                <a class="btn btn-outline-dark " href="{{ path('cart.index') }}"><i class="bi bi-cart2"></i></a>
                             </li>
                         </ul>
                 {% endif %}
@@ -80,7 +80,7 @@
                             <a class="nav-link h2 text-end" href="{{ path('admin.index') }}">Administration</a>
                         </li>
                         <li>
-                            <a class="btn btn-outline-dark mt-2" href="#"><i class="bi bi-cart2"></i></a>
+                            <a class="btn btn-outline-dark mt-2" href="{{ path('cart.index') }}"><i class="bi bi-cart2"></i></a>
                         </li>
                    </ul>
                    {% endif %}
@@ -93,7 +93,7 @@
                            <a class="nav-link h2" href="{{ path('signup.index') }}">Inscription</a>
                        </li>
                        <li>
-                           <a class="btn btn-outline-dark " href="#"><i class="bi bi-cart2"></i></a>
+                           <a class="btn btn-outline-dark " href="{{ path('cart.index') }}"><i class="bi bi-cart2"></i></a>
                        </li>
                    </ul>
                    {% endif %}

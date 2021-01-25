@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Product;
 use App\Form\AdminProductType;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminProductController extends AbstractController
 {
@@ -16,10 +18,20 @@ class AdminProductController extends AbstractController
      * @var EntityManagerInterface
      */
     private $manager;
+    /**
+     * @var UploaderHelper
+     */
+    private $uploaderHelper;
+    /**
+     * @var SluggerInterface
+     */
+    private $slugger;
 
-    public function __construct(EntityManagerInterface $manager)
+    public function __construct(EntityManagerInterface $manager, UploaderHelper $uploaderHelper, SluggerInterface $slugger)
     {
         $this->manager = $manager;
+        $this->uploaderHelper = $uploaderHelper;
+        $this->slugger = $slugger;
     }
 
 
@@ -45,11 +57,17 @@ class AdminProductController extends AbstractController
             $province = $this->getUser()->getShop()->getProvince();
 
 
-
             $newProduct = $form->getData();
 
             $newProduct->setShop($shop);
             $newProduct->setProvince($province);
+
+            // Gestion du slug
+            $slug = $this->slugger->slug($newProduct->getProductName());
+            $newProduct->setSlug($slug);
+
+            // Gestion du fichier image : on utilise notre classe de service
+            $this->uploaderHelper->uploadProductImage($newProduct, $form->get('image')->getData());
 
             // Persistance en base de données
             $this->manager->persist($newProduct);
@@ -76,6 +94,9 @@ class AdminProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Gestion du fichier image : on utilise notre classe de service
+            $this->uploaderHelper->uploadProductImage($product, $form->get('image')->getData());
 
             $this->manager->flush();
 

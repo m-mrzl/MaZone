@@ -34,7 +34,7 @@
         <tr class="text-center">
             <td>{{ product.productName }}</td>
             <td>{{ product.productDescription|slice(0, 100) }}...</td>
-            <td> <img src="{{ product.productPicture }}" alt="{{ product.productName }}" class="w-50"></td>
+            <td class="col-3"> <img src="{{ asset_product_image(product.productPicture) }}" alt="{{ product.productName }}" class="w-50"></td>
             <td>{{ product.stock }}</td>
             <td>{{ product.price }}€</td>
             <td>

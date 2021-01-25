@@ -11,7 +11,7 @@
         {% for productByShop in productsByShop %}
             <div class="col-10 col-lg-3 mb-3 mx-2">
                 <div class="card">
-                    <img src="{{ productByShop.productPicture }}" class="card-img-top" alt="{{ productByShop.productName }}">
+                    <img src="{{ asset_product_image(productByShop.productPicture) }}" class="card-img-top" alt="{{ productByShop.productName }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ productByShop.productName }}</h5>
                         <p class="card-text">{{ productByShop.productDescription|slice(0, 100) }}...</p>

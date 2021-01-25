@@ -37,7 +37,7 @@
         {% for product in products %}
             <div class="col-10 col-lg-3 mb-3 mx-2">
                 <div class="card">
-                    <img src="{{ product.productPicture }}" class="card-img-top" alt="{{ product.productName }}">
+                    <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top" alt="{{ product.productName }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.productName }}</h5>
                         <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
