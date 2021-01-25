@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserDetailsController!{% endblock %}
+{% block title %}Détails utilisateur{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -14,6 +14,23 @@
             <li>Téléphone : {{ user.userPhone }}</li>
         </ul>
 
-        <a href="" class="btn btn-primary">Créez votre boutique</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <h3>Votre boutique</h3>
+            <ul>
+                <li>Nom de la boutique : {{ shopDetail.shopName }}</li>
+                <li>Description de la boutique : {{ shopDetail.shopDescription }}</li>
+                <li>Logo : {{ shopDetail.shopPicture }}</li>
+                <li>Adresse de la boutique : {{ shopDetail.shopAddress }}</li>
+                <li>Département : {{ province }}</li>
+                <li>Téléphone de la boutique : {{ shopDetail.shopPhone }}</li>
+            </ul>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin.index') }}" class="btn btn-primary">Retrouvez vos articles</a>
+        {% else %}
+            <a href="{{ path('create.shop.index') }}" class="btn btn-primary">Créez votre boutique</a>
+        {% endif %}
+
     </div>
 {% endblock %}

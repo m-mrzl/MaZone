@@ -19,7 +19,6 @@ class AdminProductController extends AbstractController
 
     public function __construct(EntityManagerInterface $manager)
     {
-
         $this->manager = $manager;
     }
 

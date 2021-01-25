@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créez votre boutique{% endblock %}
+
+{% block body %}
+    <div class="col-11 col-lg-4 mx-5 mt-3 mb-2 mx-auto bg-dark text-white p-3 rounded mt-2">
+        <h3 class="mx-3 mb-3">Inscription</h3>
+        <div  class="mx-2 ">
+            {{ form_start(form) }}
+        </div>
+        {{ form_widget(form) }}
+        <div class=" col-lg-4 mx-auto d-flex justify-content-center mt-2 mb-2">
+            <input type="submit" value="Créer votre boutique" class="btn btn-secondary mt-3 mx-4 ">
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
