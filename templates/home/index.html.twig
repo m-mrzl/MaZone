@@ -52,33 +52,44 @@
             </div>
 
             <!-- article en tete -->
-            <div class="row text-center d-flex justify-content-center pt-4">
-                {% for product in products|slice(0, 5) %}
-                <div class="col-10 col-lg-2 mb-3 ">
-                    <div class="card">
-                        <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top" alt="{{ product.productName }}">
+            <div class="row text-center d-flex justify-content-center pt-4 ">
+            {% for product in products|slice(0, 5) %}
+                <div class="col-12 col-lg-2 mb-3 ">
+                    <div class="card mx-4" style="width: 15rem;">
+                        <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top " alt="{{ product.productName }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.productName }}</h5>
-                            <a href="{{ path('category.index', {'id':product.category.id}) }}" class="badge bg-success text-decoration-none">{{ product.category.label|slice(0, 10) }}</a>
-                            <a href="{{ path('province.index', {'id':product.province.id}) }}" class="badge bg-success text-decoration-none">{{ product.province.provinceName|slice(0, 10) }}</a>
-                            <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
+                            <p class="card-text">{{ product.productDescription|slice(0, 75) }}...</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="{{ path('category.index', {'id':product.category.id}) }}" class="text-decoration-none text-dark">{{ product.category.label|slice(0, 10) }}</a></li>
+                            <li class="list-group-item"><a href="{{ path('province.index', {'id':product.province.id}) }}" class="text-decoration-none text-dark">{{ product.province.provinceName|slice(0, 10) }}</a></li>
+                        </ul>
+                        <div class="card-body">
                             <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                            <a class="btn btn-dark " href="{{ path('cart.add', {'id':product.id}) }}" title="Ajouter le produit" ><i class="bi bi-basket3-fill"></i></a>
+                        </div>
+                        <div>
+                            <a class="text-decoration-none text-dark ">Il reste {{ product.stock }} produit(s) en stock.</a>
+                        </div>
+                        <div class="card-footer text-muted mt-2">
+                            <a href="{{ path('shop.index', {'id':product.shop.id}) }}" class="text-decoration-none text-dark">{{ product.shop.shopName }}</a>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+            {% endfor %}
             </div>
 
             <!--  section Category et region -->
-            <section class="row d-flex justify-content-center">
+            <section class="row d-flex justify-content-center bg-dark pb-3">
 
                 <!-- 7 categories-->
                 <div class="col-lg-4 col-10">
-                    <h3 class="text-center mt-5 mb-4">Categories</h3>
+                    <h3 class="text-center mt-5 mb-4 text-secondary">Categories</h3>
                     <div class="row container-flex ">
                         {% for category in categories %}
-                        <div class="d-grid gap-2 col-4 mb-2">
-                            <a class="btn btn-primary" href="{{ path('category.index', {'id':category.id}) }}">{{ category.label|slice(0, 5) }}</a>
+                        <div class="d-grid gap-3 col-4 mb-2 d-flex justify-content-around">
+                            <a class="btn btn-outline-secondary " href="{{ path('category.index', {'id':category.id}) }}">{{ category.label }}</a>
                         </div>
                         {% endfor %}
                     </div>
@@ -86,10 +97,10 @@
 
                 <!-- 3 département -->
                 <div class="col-lg-4 col-10">
-                    <h3 class="text-center mt-5 mb-4">Département</h3>
+                    <h3 class="text-center mt-5 mb-4 text-secondary">Département</h3>
                     {% for province in provinces %}
                     <div class="d-grid gap-2 mb-2 ">
-                        <a class="btn btn-primary" href="{{ path('province.index', {'id':province.id}) }}">{{ province.provinceName }}</a>
+                        <a class="btn btn-outline-secondary" href="{{ path('province.index', {'id':province.id}) }}">{{ province.provinceName }}</a>
                     </div>
                     {% endfor %}
                 </div>
@@ -101,18 +112,25 @@
                     <div class="carousel-inner">
                         {% for product in products|slice(0, 10) %}
                         <div class="carousel-item {%if loop.first%} active {%endif%}">
-                            <div class="card mb-3">
-                                <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top" alt="{{ product.productName }}">
-                                <div class="card-body ">
-                                    <h5 class="card-title text-center">{{ product.productName }}</h5>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="{{ path('category.index', {'id':product.category.id}) }}" class="badge bg-info text-decoration-none me-2">{{ product.category.label|slice(0, 10) }}</a>
-                                        <a href="{{ path('province.index', {'id':product.province.id}) }}" class="badge bg-info text-decoration-none">{{ product.province.provinceName|slice(0, 10) }}</a>
-                                    </div>
-                                    <p class="card-text text-center">{{ product.productDescription|slice(0,300) }}...</p>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
-                                    </div>
+                            <div class="card " >
+                                <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top " alt="{{ product.productName }}">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title mb-3">{{ product.productName }}</h5>
+                                    <p class="card-text">{{ product.productDescription|slice(0, 200) }}...</p>
+                                </div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item "><a href="{{ path('category.index', {'id':product.category.id}) }}" class="text-decoration-none text-dark">{{ product.category.label|slice(0, 10) }}</a></li>
+                                    <li class="list-group-item"><a href="{{ path('province.index', {'id':product.province.id}) }}" class="text-decoration-none text-dark">{{ product.province.provinceName|slice(0, 10) }}</a></li>
+                                </ul>
+                                <div class="card-body text-center">
+                                    <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                                    <a class="btn btn-dark " href="{{ path('cart.add', {'id':product.id}) }}" title="Ajouter le produit" ><i class="bi bi-basket3-fill"></i></a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="text-decoration-none text-dark ">Il reste {{ product.stock }} produit(s) en stock.</a>
+                                </div>
+                                <div class="card-footer text-muted mt-2 text-center ">
+                                    <a href="{{ path('shop.index', {'id':product.shop.id}) }}" class="text-decoration-none text-dark ">Vendu par {{ product.shop.shopName }}</a>
                                 </div>
                             </div>
                         </div>
