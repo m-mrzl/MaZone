@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserDetailsController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3>Votre profil</h3>
+        <ul>
+            <li>Prénom : {{ user.firstname }}</li>
+            <li>Nom : {{ user.lastname }}</li>
+            <li>Email : {{ user.email }}</li>
+            <li>Adresse : {{ user.userAddress }}</li>
+            <li>Code postal : {{ user.postalCode }}</li>
+            <li>Téléphone : {{ user.userPhone }}</li>
+        </ul>
+
+        <a href="" class="btn btn-primary">Créez votre boutique</a>
+    </div>
+{% endblock %}

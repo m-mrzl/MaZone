@@ -64,7 +64,7 @@ class Product
     private $shop;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="product", cascade="remove")
      */
     private $comments;
 

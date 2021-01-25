@@ -39,20 +39,22 @@ class AdminProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // récupérer le shopName  ///
-            $shopName = $this->getUser()->getShop()->getShopName();
+            // récupérer le shop  ///
+            $shop = $this->getUser()->getShop();
 
-            // récupérer le provinceName  ///
-            $provinceName = $this->getUser()->getShop()->getProvince()->getProvinceName();
+            // récupérer le province  ///
+            $province = $this->getUser()->getShop()->getProvince();
 
-        // dd($provinceName, $shopName);
+
 
             $newProduct = $form->getData();
 
+            $newProduct->setShop($shop);
+            $newProduct->setProvince($province);
 
             // Persistance en base de données
-          // $this->manager->persist($newProduct);
-          //$this->manager->flush();
+            $this->manager->persist($newProduct);
+            $this->manager->flush();
 
             return $this->redirectToRoute('admin.index');
 

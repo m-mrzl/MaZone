@@ -13,7 +13,7 @@
                 <div class="col-10 col-lg-8 my-5">
                     <div class="card text-center">
                         <div class="card-header text-center">
-                            Proposé par : <a href="#">{{ productDetail.shop.shopName }}</a>
+                            Proposé par : <a href="{{ path('shop.index', {'id':productDetail.shop.id}) }}">{{ productDetail.shop.shopName }}</a>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ productDetail.productName }}</h5>
