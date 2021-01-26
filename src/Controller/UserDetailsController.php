@@ -22,7 +22,7 @@ class UserDetailsController extends AbstractController
 
         if ($user->hasRole('ROLE_ADMIN')) {
 
-            $shopId = $user->getShop()->getiD();
+            $shopId = $user->getShop()->getId();
 
             $shop = $shopRepository->findBy(['id' => $shopId]);
 

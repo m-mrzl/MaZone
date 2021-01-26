@@ -29,9 +29,6 @@ class UploaderHelper
         // Si l'administrateur a rempli le champ image...
         if ($uploadedFile) {
 
-            // Suppression de l'image actuelle le cas échéant
-            //$this->removePostImageFile($product);
-
             // Normalisation du nom du fichier image
             $originalFilename = pathinfo($uploadedFile->getClientOriginalName(),
                 PATHINFO_FILENAME);

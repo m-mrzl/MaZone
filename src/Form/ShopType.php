@@ -37,6 +37,7 @@ class ShopType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
+                    new NotBlank(),
                     new Image([
                         'maxSize' => '20M',
                         'maxSizeMessage' => 'post.image.maxSize'
