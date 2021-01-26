@@ -73,6 +73,8 @@ class AdminProductController extends AbstractController
             $this->manager->persist($newProduct);
             $this->manager->flush();
 
+            $this->addFlash('success', 'Votre produit a bien été ajouté');
+
             return $this->redirectToRoute('admin.index');
 
         }

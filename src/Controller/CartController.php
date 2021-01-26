@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -43,7 +44,7 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/add/{id<\d+>}", name="cart.add")
      */
-    public function add($id, SessionInterface $session)
+    public function add($id, SessionInterface $session, Request $request)
     {
         $panier = $session->get('panier', []);
 
@@ -59,7 +60,9 @@ class CartController extends AbstractController
 
         $session->set('panier', $panier);
 
-        return $this->redirectToRoute('cart.index');
+        $this->addFlash('success', 'Produit bien ajouté au panier');
+
+        return $this->redirect($request->headers->get('referer'));
     }
 
     /**

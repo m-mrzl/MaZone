@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ShopType;
+use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +16,15 @@ class CreateShopController extends AbstractController
      * @var EntityManagerInterface
      */
     private $manager;
+    /**
+     * @var UploaderHelper
+     */
+    private $uploaderHelper;
 
-    public function __construct(EntityManagerInterface $manager)
+    public function __construct(EntityManagerInterface $manager, UploaderHelper $uploaderHelper)
     {
         $this->manager = $manager;
+        $this->uploaderHelper = $uploaderHelper;
     }
 
     /**
@@ -41,9 +47,14 @@ class CreateShopController extends AbstractController
 
             $user->setRoles(['ROLE_ADMIN']);
 
+            // Gestion du fichier image : on utilise notre classe de service
+            $this->uploaderHelper->uploadShopImage($newShop, $form->get('image')->getData());
+
             // Persistance en base de données
             $this->manager->persist($newShop);
             $this->manager->flush();
+
+            $this->addFlash('success', 'Votre boutique a bien été créé');
 
             return $this->redirectToRoute('admin.index');
         }

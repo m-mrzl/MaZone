@@ -21,11 +21,11 @@
                     {% for item in items %}
                         <tr>
                             <td>{{ item.product.productName }}</td>
-                            <td>{{ item.product.price }}</td>
+                            <td>{{ item.product.price }} €</td>
                             <td>{{ item.quantity }}</td>
-                            <td>{{ item.product.price * item.quantity }}</td>
+                            <td>{{ item.product.price * item.quantity }} €</td>
                             <td>
-                                <a href="{{ path('cart.remove', {'id': item.product.id}) }}" class="btn btn-danger">
+                                <a href="{{ path('cart.remove', {'id': item.product.id}) }}" class="btn btn-danger" onclick="var aze=confirm('Êtes-vous sur de vouloir supprimer ce produit de votre panier ?');return aze;">
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </td>
@@ -35,7 +35,7 @@
                 <tfoot>
                 <tr>
                     <td colspan="3" class="text-end">Total : </td>
-                    <td>{{ total }}</td>
+                    <td>{{ total }} €</td>
                     <td></td>
                 </tr>
                 </tfoot>

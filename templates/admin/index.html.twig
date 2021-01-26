@@ -39,7 +39,7 @@
             <td>{{ product.price }}€</td>
             <td>
                 <a href="{{ path('admin.edit', {'id':product.id}) }}" class="text-warning me-3"><i class="bi bi-pencil-fill "></i></a>
-                <a href="{{ path('admin.remove', {'id':product.id}) }}" class="text-danger"><i class="bi bi-trash-fill"></i></a>
+                <a href="{{ path('admin.remove', {'id':product.id}) }}" class="text-danger"><i class="bi bi-trash-fill" onclick="var aze=confirm('Êtes-vous sur de vouloir supprimer ce produit ?');return aze;"></i></a>
             </td>
 
         </tr>

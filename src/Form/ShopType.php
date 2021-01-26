@@ -7,10 +7,12 @@ use App\Entity\Shop;
 use App\Repository\ProvinceRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ShopType extends AbstractType
@@ -30,10 +32,15 @@ class ShopType extends AbstractType
                     new NotBlank()
                 ],
             ])
-            ->add('shopPicture', TextType::class, [
+            ->add('image', FileType::class, [
                 'label' => 'Logo',
+                'mapped' => false,
+                'required' => false,
                 'constraints' => [
-                    new NotBlank()
+                    new Image([
+                        'maxSize' => '20M',
+                        'maxSizeMessage' => 'post.image.maxSize'
+                    ])
                 ],
             ])
             ->add('shopPhone', TextType::class, [

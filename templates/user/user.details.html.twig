@@ -19,10 +19,10 @@
             <ul>
                 <li>Nom de la boutique : {{ shopDetail.shopName }}</li>
                 <li>Description de la boutique : {{ shopDetail.shopDescription }}</li>
-                <li>Logo : {{ shopDetail.shopPicture }}</li>
                 <li>Adresse de la boutique : {{ shopDetail.shopAddress }}</li>
                 <li>Département : {{ province }}</li>
                 <li>Téléphone de la boutique : {{ shopDetail.shopPhone }}</li>
+                <li>Logo : <img src="{{ asset_product_image(shopDetail.shopPicture) }}" alt="{{ shopDetail.shopName }}" class="w-25"></li>
             </ul>
         {% endif %}
 

@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Product;
+use App\Entity\Shop;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -38,6 +39,28 @@ class UploaderHelper
                 . $uploadedFile->guessExtension();
 
             $product->setProductPicture($newFilename);
+
+            // Copie du fichier temporaire vers le répertoire de destination
+            $uploadedFile->move($this->productImageDirectory, $newFilename);
+        }
+
+    }
+
+    public function uploadShopImage(Shop $shop, ?UploadedFile $uploadedFile)
+    {
+        // Si l'administrateur a rempli le champ image...
+        if ($uploadedFile) {
+
+            // Suppression de l'image actuelle le cas échéant
+            //$this->removePostImageFile($product);
+
+            // Normalisation du nom du fichier image
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(),
+                PATHINFO_FILENAME);
+            $newFilename = $this->slugger->slug($originalFilename) . '-' . uniqid() . '.'
+                . $uploadedFile->guessExtension();
+
+            $shop->setShopPicture($newFilename);
 
             // Copie du fichier temporaire vers le répertoire de destination
             $uploadedFile->move($this->productImageDirectory, $newFilename);
