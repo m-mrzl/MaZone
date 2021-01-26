@@ -52,10 +52,10 @@
 
             <!-- article en aléatoire -->
             <div class="row text-center d-flex justify-content-center pt-4 ">
-            {% for product in products|slice(0, 5) %}
+            {% for product in products|slice(5, 5) %}
                 <div class="col-12 col-lg-2 mb-3 ">
                     <div class="card mx-4" style="width: 15rem;">
-                        <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top " alt="{{ product.productName }}">
+                        <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top img-fluid " alt="{{ product.productName }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.productName }}</h5>
                             <p class="card-text">{{ product.productDescription|slice(0, 75) }}...</p>
