@@ -262,7 +262,7 @@ class AppFixtures extends Fixture
         $product2 = new Product();
         $product2->setProductName('Rousse du Mont-Blanc');
         $product2->setProductDescription('1 bouteille ou pack de 3, 6 ou 12 bouteilles de bière rousse du Mont-Blanc. Brasserie de Mont-Blanc.<br>Bière brassée en Savoie.<br>Ambrée spéciale aux 3 malts.');
-        $product2->setProductPicture('product2.png');
+        $product2->setProductPicture('product2.jpg');
         $product2->setPrice(2.31);
         $product2->setStock(10);
         $product2->setSlug('Rousse-du-Mont-Blanc');
