@@ -717,6 +717,15 @@ class AppFixtures extends Fixture
 
 
         //ProductFactory::new()->createMany(100);
+        
+        for($i=0; $i<100; $i++){
+
+            $id = 'product' . rand(1, 39);
+
+            CommentFactory::new()->create([
+               'product' => $$id
+            ]);
+        }
 
         //CommentFactory::new()->createMany(400);
 
