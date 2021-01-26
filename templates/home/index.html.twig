@@ -9,10 +9,10 @@
 {% block body %}
 
         <!------------------------------------------ corp de page home/index ------------------------------------------>
-                <div class="py-5 ">
-                    <div class="row shadow-lg p-3 mb-5 bg-white rounded"  id="fond">
+                <div class="py-5 " >
+                    <div class="row shadow-lg p-3 mb-5 bg-white rounded" >
                         <!-- formulaire -->
-                        <div class="col-9 col-lg-3 mx-5 mb-3 bg-dark text-white border border-white mx-3 py-3 border-4 rounded">
+                        <div class="col-9 col-lg-3 mx-5 mb-3 bg-dark text-white border border-white mx-3 py-3 border-4 rounded" >
                             <h3>Votre recherche</h3>
                             <div  class="mx-2">
                                 {{ form_start(form) }}
@@ -25,7 +25,7 @@
                         </div>
 
                         <!-- text de présentation du site -->
-                        <div class=" col-lg-6 d-flex d-none d-lg-block " >
+                        <div class="col-lg-6 d-flex d-none d-lg-block " >
                             <p class="text-start  ">
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex maxime enim temporibus necessitatibus repudiandae voluptatum aliquam animi? Numquam aut, itaque a dicta ullam veritatis ipsa quo, quae sed facere quas repudiandae assumenda ex, nobis expedita voluptatem totam ad nesciunt nihil.
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis maiores nesciunt, laboriosam omnis pariatur ad quos nobis? Sapiente voluptatum sed sint rerum libero autem ab aliquam debitis cumque nihil corrupti, facere veritatis quasi harum magni qui quam ullam in quisquam!
@@ -38,7 +38,7 @@
                                 </button>
                             </div>
                             <div class="collapse col-10 mx-auto " id="collapseExample">
-                                <div class="card card-body ">
+                                <div class="card card-body " id="color">
                                     <p class="text-start ">
                                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex maxime enim temporibus necessitatibus repudiandae voluptatum aliquam animi? Numquam aut, itaque a dicta ullam veritatis ipsa quo, quae sed facere quas repudiandae assumenda ex, nobis expedita voluptatem totam ad nesciunt nihil.
                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis maiores nesciunt, laboriosam omnis pariatur ad quos nobis? Sapiente voluptatum sed sint rerum libero autem ab aliquam debitis cumque nihil corrupti, facere veritatis quasi harum magni qui quam ullam in quisquam!
@@ -52,24 +52,25 @@
 
             <!-- article en aléatoire -->
             <div class="row text-center d-flex justify-content-center pt-4 ">
-            {% for product in products|slice(5, 5) %}
-                <div class="col-12 col-lg-2 mb-3 ">
-                    <div class="card mx-4" style="width: 15rem;">
-                        <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top img-fluid " alt="{{ product.productName }}">
+            {% for product in products|slice(0, 5) %}
+                <div class="col-10 col-lg-2 mb-3 ">
+                    <div class="card" >
+                        <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top img-fluid " id="imgHome" alt="{{ product.productName }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.productName }}</h5>
-                            <p class="card-text">{{ product.productDescription|slice(0, 75) }}...</p>
+                            <p class="card-text">{{ product.productDescription|slice(0, 70) }}...</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item btn btn-outline-secondary"><a href="{{ path('category.index', {'id':product.category.id}) }}" class="text-decoration-none text-dark">{{ product.category.label|slice(0, 10) }}</a></li>
                             <li class="list-group-item btn btn-outline-secondary"><a href="{{ path('province.index', {'id':product.province.id}) }}" class="text-decoration-none text-dark">{{ product.province.provinceName|slice(0, 10) }}</a></li>
                         </ul>
                         <div class="card-body">
-                            <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-secondary">Voir le produit</a>
+                            <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-secondary mb-2">Voir le produit</a>
                             <a class="btn btn-dark " href="{{ path('cart.add', {'id':product.id}) }}" title="Ajouter le produit" ><i class="bi bi-basket3-fill"></i></a>
                         </div>
                         <div>
-                            <a class="text-decoration-none text-dark ">Il reste {{ product.stock }} produit(s) en stock.</a>
+                            <h5 class="text-decoration-none text-dark ">Prix : <span class="badge bg-secondary"> {{ product.price }} € </span> </h5>
+                            <p class="text-decoration-none text-dark ">Il reste {{ product.stock }} produit(s) en stock.</p>
                         </div>
                         <div class="card-footer text-muted mt-2">
                             <a href="{{ path('shop.index', {'id':product.shop.id}) }}" class="text-decoration-none text-dark">{{ product.shop.shopName }}</a>
@@ -80,39 +81,41 @@
             </div>
 
             <!--  section Category et region -->
-            <section class="row d-flex justify-content-center bg-dark pb-3 ">
+           <div class="shadow-lg p-3 mb-5 bg-white rounded">
+               <section class="row d-flex justify-content-center bg-dark pb-3 ">
 
-                <!-- 7 categories-->
-                <div class="col-lg-4 col-10">
-                    <h3 class="text-center mt-5 mb-4 text-secondary">Categories</h3>
-                    <div class="row container-flex ">
-                        {% for category in categories %}
-                        <div class="d-grid gap-3 col-4 mb-2 d-flex justify-content-around">
-                            <a class="btn btn-outline-secondary " href="{{ path('category.index', {'id':category.id}) }}">{{ category.label }}</a>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
+                   <!-- 7 categories-->
+                   <div class="col-lg-4 col-10">
+                       <h3 class="text-center mt-5 mb-4 text-white">Categories</h3>
+                       <div class="row container-flex ">
+                           {% for category in categories %}
+                               <div class="d-grid gap-3 col-4 mb-2 d-flex justify-content-around">
+                                   <a class="btn btn-outline-secondary " href="{{ path('category.index', {'id':category.id}) }}">{{ category.label }}</a>
+                               </div>
+                           {% endfor %}
+                       </div>
+                   </div>
 
-                <!-- 3 département -->
-                <div class="col-lg-4 col-10">
-                    <h3 class="text-center mt-5 mb-4 text-secondary">Département</h3>
-                    {% for province in provinces %}
-                    <div class="d-grid gap-2 mb-2 ">
-                        <a class="btn btn-outline-secondary" href="{{ path('province.index', {'id':province.id}) }}">{{ province.provinceName }}</a>
-                    </div>
-                    {% endfor %}
-                </div>
-            </section>
+                   <!-- 3 département -->
+                   <div class="col-lg-4 col-10">
+                       <h3 class="text-center mt-5 mb-4 text-white">Département</h3>
+                       {% for province in provinces %}
+                           <div class="d-grid gap-2 mb-2 ">
+                               <a class="btn btn-outline-secondary" href="{{ path('province.index', {'id':province.id}) }}">{{ province.provinceName }}</a>
+                           </div>
+                       {% endfor %}
+                   </div>
+               </section>
+           </div>
 
             <!-- carousel de produits -->
             <article class="row d-flex justify-content-center my-4">
                 <div id="carouselExampleControls" class="carousel slide col-10 col-lg-8 mt-4 shadow p-3 mb-5 bg-white rounded " data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        {% for product in products|slice(0, 10) %}
+                        {% for product in products|slice(25, 5) %}
                         <div class="carousel-item {%if loop.first%} active {%endif%}">
                             <div class="card " >
-                                <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top " alt="{{ product.productName }}">
+                                <img src="{{ asset_product_image(product.productPicture) }}" id="imgCarou" class="card-img-top " alt="{{ product.productName }}">
                                 <div class="card-body text-center">
                                     <h5 class="card-title mb-3">{{ product.productName }}</h5>
                                     <p class="card-text">{{ product.productDescription|slice(0, 200) }}...</p>

@@ -23,11 +23,11 @@
                 </div>
                 <div class="col-10 col-lg-6 my-3">
                     <div class="card text-center">
-                        <div>
-                            <img src="{{ asset_product_image(productDetail.productPicture) }}" class="img-fluid " alt="caddy">
+                        <div class="card-header text-center mb-2">
+                            <p> Proposé par : <a class="text-info text-decoration-none" href="{{ path('shop.index', {'id':productDetail.shop.id}) }}">{{ productDetail.shop.shopName }}</a></p>
                         </div>
-                        <div class="card-header text-center mt-2">
-                            <p> Proposé par : <a href="{{ path('shop.index', {'id':productDetail.shop.id}) }}">{{ productDetail.shop.shopName }}</a></p>
+                        <div>
+                            <img src="{{ asset_product_image(productDetail.productPicture) }}" class="img-fluid " alt="{{ productDetail.shop.shopname }}" id="imgDetail">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ productDetail.productName }}</h5>
@@ -38,9 +38,9 @@
                                 <div class="col-6">Prix : {{ productDetail.price }} € </div>
                                 <div class="col-6">Il reste {{ productDetail.stock }} produit(s) en stock.</div>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="{{ path('cart.add', {'id':productDetail.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+                            <div class="mt-2">
+                                <a href="{{ path('cart.add', {'id':productDetail.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                             </div>
                         {% else %}
                             <div class="container">
-                                <p class="text-center">Pour poster un commentaire, <a href="{{ path('security.login') }}" class="text-dark text-decoration-none">connectez-vous</a> ou <a href="{{ path('signup.index') }}" class="text-dark text-decoration-none">créez un compte</a>.</p>
+                                <p class="text-center">Pour poster un commentaire, <a href="{{ path('security.login') }}" class="text-info text-decoration-none">connectez-vous</a> ou <br><a href="{{ path('signup.index') }}" class="text-info text-decoration-none">créez un compte</a>.</p>
                             </div>
                         {% endif %}
                     </div>

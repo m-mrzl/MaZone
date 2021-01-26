@@ -7,7 +7,7 @@
     <div class=" row container  ms-auto">
         <div class="my-2 d-flex justify-content-center">
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('admin.index') }}" class="btn btn-primary">Retrouvez vos articles</a>
+                <a href="{{ path('admin.index') }}" class="btn btn-info">Retrouvez vos articles</a>
             {% else %}
                 <p>Vendez vos produits locaux <a href="{{ path('create.shop.index') }}" class="btn btn-primary">Créez votre boutique</a></p>
             {% endif %}
@@ -42,6 +42,7 @@
                         <li class="list-group-item">Département : {{ province }}</li>
                         <li class="list-group-item">Code postal : {{ user.postalCode }}</li>
                         <li class="list-group-item">Téléphone de la boutique : {{ shopDetail.shopPhone }}</li>
+                        <li class="list-group-item">Votre logo : <img src="{{ asset_product_image(shopDetail.shopPicture) }}" alt="{{ shopDetail.shopName }}" class="rounded mx-auto d-block w-25"></li>
                     </ul>
                 </div>
             </div>

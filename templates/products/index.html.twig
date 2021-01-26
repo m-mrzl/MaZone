@@ -6,13 +6,8 @@
     <!------------------------------------------ corp de page recherche produits/index ------------------------------------------>
 
     <!--  formulaire de recherche par Category et province -->
-    <div class="row">
-        <div class="col-10 col-lg-6 d-none d-lg-block text-center my-auto mx-auto mt-3">
-            <h2 class="bg-dark text-white rounded py-2">Votre recherche</h2>
-            <h3>Département :<span class="badge bg-secondary col-10 mx-2">{{ provinceName }}</span></h3>
-            <h3>Catégorie :<span class="badge bg-secondary col-10 mx-2">{{ categoryName }}</span></h3>
-        </div>
-        <div class="col-10 col-lg-4 mx-5 mt-3 mb-2 mx-auto bg-dark text-white p-3 rounded mt-2">
+
+        <div class="col-10 col-lg-4 mx-5 mt-3 mb-2 mx-auto bg-dark text-white p-3 rounded mt-2 shadow-lg p-3 mb-5 bg-white rounded">
             <h3>Nouvelle recherche</h3>
             <div  class="mx-2 ">
                 {{ form_start(form) }}
@@ -23,28 +18,47 @@
             </div>
             {{ form_end(form) }}
         </div>
-        <div class="col-10 col-lg-6 d-lg-none text-center my-auto mx-auto mt-3">
-            <h2 class="bg-dark text-white rounded py-2">Votre recherche</h2>
-            <h3>Département :<span class="badge bg-secondary col-10 mx-2">{{ provinceName }}</span></h3>
-            <h3>Catégorie :<span class="badge bg-secondary col-10 mx-2">{{ categoryName }}</span></h3>
+        <div class="row">
+            <div class="col-10 col-lg-6 text-center my-auto mx-auto py-3">
+                <h3>Votre recherche</h3>
+                <h3><span class="badge bg-secondary col-6 mx-2 ">Département : {{ provinceName }}</span></h3>
+                <h3><span class="badge bg-secondary col-6 mx-2 ">Catégorie : {{ categoryName }}</span></h3>
+            </div>
         </div>
-    </div>
 
 
 
     <!--  selection de produit par Category et region -->
+    {% if products|length>0 %}
+    <!-- Produit par catégories-->
     <div class="row text-center d-flex justify-content-center pt-4 ">
-        {% for product in products %}
-            <div class="col-10 col-lg-3 mb-3 mx-2">
-                <div class="card">
-                    <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top" alt="{{ product.productName }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.productName }}</h5>
-                        <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
-                        <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
-                    </div>
+    {% for product in products %}
+        <div class="col-10 col-lg-3 mb-3 mx-2">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <img src="{{ asset_product_image(product.productPicture) }}" id="imgSearch" class="card-img-top" alt="{{ product.productName }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.productName }}</h5>
+                    <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
+                    <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                    <a class="btn btn-dark " href="{{ path('cart.add', {'id':product.id}) }}" title="Ajouter le produit" ><i class="bi bi-basket3-fill"></i></a>
+                </div>
+                <div>
+                    <h5 class="text-decoration-none text-dark ">Prix : <span class="badge bg-secondary"> {{ product.price }} € </span> </h5>
+                    <a class="text-decoration-none text-dark ">Il reste {{ product.stock }} produit(s) en stock.</a>
+                </div>
+                <div class="card-footer text-muted mt-2">
+                    <a href="{{ path('shop.index', {'id':product.shop.id}) }}" class="text-decoration-none text-dark">{{ product.shop.shopName }}</a>
                 </div>
             </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
+        </div>
+            {% else %}
+        <div class="container d-flex justify-content-center py-5">
+            <div class="text-center mx-auto p-3" id="red">
+                <p>Il n'y a pas encore de produit disponible avec cette recherche</p>
+                <p>Merci de faire une nouvelle recherche</p>
+            </div>
+        </div>
+    {% endif %}
+
 {% endblock %}

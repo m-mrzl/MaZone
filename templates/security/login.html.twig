@@ -25,10 +25,10 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         </div>
         <div class="d-flex justify-content-center pt-2">
-            <button class="btn btn-lg btn-primary" type="submit">Connexion</button>
+            <button class="btn btn-lg btn-secondary" type="submit">Connexion</button>
         </div>
         <div class="mx-auto d-flex justify-content-center mt-2 mb-2">
-            Si vous n'avez pas de compte<a href="{{ path('signup.index') }}" class="ms-2 text-decoration-none">Inscription</a>
+            Si vous n'avez pas de compte<a href="{{ path('signup.index') }}" class="ms-2 text-info text-decoration-none">Inscription</a>
         </div>
     </div>
 </form>
