@@ -32,7 +32,6 @@ final class CommentFactory extends ModelFactory
     {
         return [
             'user' => UserFactory::random(),
-            'product' => ProductFactory::random(),
             'content' => self::faker()->text(250),
             'createdAt' => self::faker()->dateTimeBetween('-3 years', 'now', 'Europe/Paris'),
         ];
