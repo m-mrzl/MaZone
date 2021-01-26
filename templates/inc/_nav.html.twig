@@ -1,17 +1,18 @@
 
-<header class="header">
+
 
     <!-- NAVBAR PC -->
     <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-        <div class="container pt-1">
+        <div class="container pt-1 ">
             <div class="d-none d-lg-block">
                 <!------------ logo -------->
                 <a href="{{ path('home.index') }}">
                     <img  src="{{ asset('images/logo.svg') }}"  alt="LOGO" width="70"  >
                 </a>
             </div>
+
             <!------------ menu connexion / inscription / panier  -------->
-            <a href="{{ path('home.index') }}" class="d-none d-lg-block text-center h1 text-decoration-none text-dark" >MaZone</a>
+            <a href="{{ path('home.index') }}" class="d-none d-lg-block text-center h1 text-decoration-none text-dark ms-5 ps-4" >MaZone</a>
             <div class="d-none d-lg-block pt-2" id="navbarText">
                 <!--   Profil client   -->
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -23,11 +24,11 @@
                             <a href="{{ path('user.details.index') }}" class="nav-link me-3">Profil</a>
                         </li>
                     <!--   Profil vendeur  -->
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
-                            <a href="{{ path('admin.index') }}"  class="nav-link me-3" >Administration</a>
-                        </li>
-                    {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a href="{{ path('admin.index') }}"  class="nav-link me-3" >Administration</a>
+                            </li>
+                        {% endif %}
                         <li>
                             <a class="btn btn-outline-dark " href="{{ path('cart.index') }}"><i class="bi bi-cart2"></i></a>
                         </li>
@@ -55,7 +56,7 @@
         <nav class="navbar  navbar-light bg-light">
             <div class="container-fluid d-lg-none">
                 <!------------ logo -------->
-                <a href="{{ path('home.index') }}" class="d-lg-none d-block text-center h1 text-decoration-none text-dark" >Ma Zone</a>
+                <a href="{{ path('home.index') }}" class="d-lg-none d-block text-center h1 text-decoration-none text-dark " >Ma Zone</a>
                 <button class="navbar-toggler " data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="container" onclick="Xnav(this)">
                         <div class="bar1"></div>
@@ -69,11 +70,14 @@
                 <div class="px-3 mt-4 " >
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link h2 text-end" href="{{ path('security.logout') }}" >Déconnexion</a>
+                        <li class="nav-item h2">
+                            <a href="{{ path('home.index') }}" class="nav-link h2 text-end" >accueil</a>
                         </li>
                         <li class="nav-item h2">
                             <a href="{{ path('user.details.index') }}" class="nav-link me-3 text-end">Profil</a>
+                        </li>
+                        <li class="nav-item h2">
+                            <a class="nav-link h2 text-end" href="{{ path('security.logout') }}" >Déconnexion</a>
                         </li>
                     {% if is_granted('ROLE_ADMIN') %}
                         <li>
@@ -86,6 +90,9 @@
                    {% endif %}
                    {% else %}
                    <ul class="navbar-nav mb-2 mb-lg-0 ">
+                       <li class="nav-item text-center">
+                            <a href="{{ path('home.index') }}" class="nav-link h2" >accueil</a>
+                       </li>
                        <li class="nav-item text-center">
                            <a class="nav-link h2" href="{{ path('security.login') }}">Connexion</a>
                        </li>
@@ -100,4 +107,3 @@
                 </div>
             </div>
         </nav>
-</header>

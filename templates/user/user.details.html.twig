@@ -3,34 +3,49 @@
 {% block title %}Détails utilisateur{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h3>Votre profil</h3>
-        <ul>
-            <li>Prénom : {{ user.firstname }}</li>
-            <li>Nom : {{ user.lastname }}</li>
-            <li>Email : {{ user.email }}</li>
-            <li>Adresse : {{ user.userAddress }}</li>
-            <li>Code postal : {{ user.postalCode }}</li>
-            <li>Téléphone : {{ user.userPhone }}</li>
-        </ul>
 
-        {% if is_granted('ROLE_ADMIN') %}
-            <h3>Votre boutique</h3>
-            <ul>
-                <li>Nom de la boutique : {{ shopDetail.shopName }}</li>
-                <li>Description de la boutique : {{ shopDetail.shopDescription }}</li>
-                <li>Adresse de la boutique : {{ shopDetail.shopAddress }}</li>
-                <li>Département : {{ province }}</li>
-                <li>Téléphone de la boutique : {{ shopDetail.shopPhone }}</li>
-                <li>Logo : <img src="{{ asset_product_image(shopDetail.shopPicture) }}" alt="{{ shopDetail.shopName }}" class="w-25"></li>
-            </ul>
-        {% endif %}
+    <div class=" row container  ms-auto">
+        <div class="my-2 d-flex justify-content-center">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('admin.index') }}" class="btn btn-primary">Retrouvez vos articles</a>
+            {% else %}
+                <p>Vendez vos produits locaux <a href="{{ path('create.shop.index') }}" class="btn btn-primary">Créez votre boutique</a></p>
+            {% endif %}
+        </div>
+            <div class="card my-3">
+                <div class="card-header ">
+                    <h4>Bienvenue sur votre page {{ user.lastname }}</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Information de votre compte </h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Prénom : {{ user.firstname }}</li>
+                        <li class="list-group-item">Nom : {{ user.lastname }}</li>
+                        <li class="list-group-item">Email : {{ user.email }}</li>
+                        <li class="list-group-item">Adresse : {{ user.userAddress }}</li>
+                        <li class="list-group-item">Code postal : {{ user.postalCode }}</li>
+                        <li class="list-group-item">Téléphone : {{ user.userPhone }}</li>
+                    </ul>
+                </div>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="card my-3">
+                <div class="card-header ">
+                    <h4>Information de votre Boutique {{ shopDetail.shopName }}</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Information de votre compte </h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Nom de la boutique : {{ shopDetail.shopName }}</li>
+                        <li class="list-group-item">Description de la boutique : {{ shopDetail.shopDescription }}</li>
+                        <li class="list-group-item">Adresse de la boutique : {{ shopDetail.shopAddress }}</li>
+                        <li class="list-group-item">Département : {{ province }}</li>
+                        <li class="list-group-item">Code postal : {{ user.postalCode }}</li>
+                        <li class="list-group-item">Téléphone de la boutique : {{ shopDetail.shopPhone }}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
 
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('admin.index') }}" class="btn btn-primary">Retrouvez vos articles</a>
-        {% else %}
-            <a href="{{ path('create.shop.index') }}" class="btn btn-primary">Créez votre boutique</a>
-        {% endif %}
-
-    </div>
 {% endblock %}

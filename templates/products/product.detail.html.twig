@@ -3,22 +3,34 @@
 {% block title %}Détail du produit{% endblock %}
 
 {% block body %}
-    <main>
-        <div class="container d-flex justify-content-center">
+        <div class="container d-flex justify-items-center mt-3">
             <div class="row">
-                <div class="col-10 col-lg-4 my-5">
-                    <img src="{{ asset_product_image(productDetail.productPicture) }}" class="rounded  img-thumbnail " alt="caddy">
+                <div class="col-10 col-lg-3 my-5 ">
+                    <div class="mb-4">
+                        <img src="{{ productDetail.shop.shopPicture }}" alt="{{ productDetail.productName }}" class="w-75">
+                    </div>
+                    <div class="mt-">
+                        <h2>Coordonnées</h2>
+                        <address>
+                            <span>Adresse : {{ productDetail.shop.shopAddress }}</span><br>
+                            <span>Ouvert : 7j/j de 09h à 13h et de 14h à 20h</span><br>
+                            <span>Téléphone : {{ productDetail.shop.shopPhone }}</span><br>
+                            <span>Email : {{ productDetail.shop.user.email }}</span><br>
+                            <span>Catégorie : {{ productDetail.category.label}}</span><br>
+                            <span>Département : {{ productDetail.province.provinceName }}</span>
+                        </address>
+                    </div>
                 </div>
-
-                <div class="col-10 col-lg-8 my-5">
+                <div class="col-10 col-lg-6 my-3">
                     <div class="card text-center">
-                        <div class="card-header text-center">
-                            Proposé par : <a href="{{ path('shop.index', {'id':productDetail.shop.id}) }}">{{ productDetail.shop.shopName }}</a>
+                        <div>
+                            <img src="{{ asset_product_image(productDetail.productPicture) }}" class="img-fluid " alt="caddy">
+                        </div>
+                        <div class="card-header text-center mt-2">
+                            <p> Proposé par : <a href="{{ path('shop.index', {'id':productDetail.shop.id}) }}">{{ productDetail.shop.shopName }}</a></p>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ productDetail.productName }}</h5>
-                            <a href="{{ path('category.index', {'id':productDetail.category.id}) }}" class="badge bg-success text-decoration-none">{{ productDetail.category.label }}</a>
-                            <a href="{{ path('province.index', {'id':productDetail.province.id}) }}" class="badge bg-success text-decoration-none">{{ productDetail.province.provinceName }}</a>
                             <p class="card-text px-5 py-3">Description du produit :
                                 {{ productDetail.productDescription }}
                             </p>
@@ -32,46 +44,29 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!--infos producteur-->
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <!-- Formulaire d'ajout de commentaire -->
-            <div class="container">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit" value="Envoyer" class="btn btn-primary my-3">
-                {{ form_end(form) }}
-            </div>
-        {% else %}
-            <div class="container">
-                <p class="text-center">Pour poster un commentaire, <a href="{{ path('security.login') }}" class="text-dark text-decoration-none">connectez-vous</a> ou <a href="{{ path('signup.index') }}" class="text-dark text-decoration-none">créez un compte</a>.</p>
-            </div>
-        {% endif %}
-
-        <div class="container py-3 mb-5 d-flex justify-content-center">
-            <div class="row">
-
-                <div class="col">
-                    <h2 class="mb-4">Commentaires</h2>
-                    {% for comment in comments %}
-                        <h4>Par {{ comment.user.firstname }} {{ comment.user.lastname }} le {{ comment.createdAt|date("d/m/y") }}</h4>
-                        <p>{{ comment.content }}</p>
+                <div class="col-10 col-lg-3 my-3">
+                    <div class="mt-2">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <!-- Formulaire d'ajout de commentaire -->
+                            <div >
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                <input type="submit" value="Envoyer" class="btn btn-primary my-3 text-center px-3">
+                                {{ form_end(form) }}
+                            </div>
+                        {% else %}
+                            <div class="container">
+                                <p class="text-center">Pour poster un commentaire, <a href="{{ path('security.login') }}" class="text-dark text-decoration-none">connectez-vous</a> ou <a href="{{ path('signup.index') }}" class="text-dark text-decoration-none">créez un compte</a>.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <h2 class="mb-2">Les commentaires</h2>
+                    {% for comment in comments%}
+                        <p class="fs-6 fw-bold pt-2">Par {{ comment.user.firstname }} {{ comment.user.lastname }} le {{ comment.createdAt|date("d/m/y") }}</p>
+                        <span >{{ comment.content }}</span>
                     {% endfor %}
                 </div>
-
-                <div class="col">
-                    <h2>Nos Coordonnées :</h2>
-                    <address>
-                        {{ productDetail.shop.shopAddress }}<br>
-                        Ouvert 7j/j de 09h à 13h et de 14h à 20h <br>
-                        <span>{{ productDetail.shop.shopPhone }}</span><br>
-                        <span>{{ productDetail.shop.user.email }}</span>
-                    </address>
-                </div>
-
             </div>
         </div>
-    </main>
+
 {% endblock %}
