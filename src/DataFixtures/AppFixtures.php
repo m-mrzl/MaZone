@@ -250,7 +250,7 @@ class AppFixtures extends Fixture
         $product1 = new Product();
         $product1->setProductName('Blanche du Mont-Blanc');
         $product1->setProductDescription('1 bouteille ou pack de 3, 6 ou 12 bouteilles de bière blanche du Mont-Blanc. Brasserie de Mont-Blanc.<br>Bière brassée en Savoie.<br>Froment, coriandre et écorce d\'orange.');
-        $product1->setProductPicture('product1.png');
+        $product1->setProductPicture('product1.jpg');
         $product1->setPrice(2.31);
         $product1->setStock(10);
         $product1->setSlug('Blanche-du-Mont-Blanc');
@@ -262,7 +262,7 @@ class AppFixtures extends Fixture
         $product2 = new Product();
         $product2->setProductName('Rousse du Mont-Blanc');
         $product2->setProductDescription('1 bouteille ou pack de 3, 6 ou 12 bouteilles de bière rousse du Mont-Blanc. Brasserie de Mont-Blanc.<br>Bière brassée en Savoie.<br>Ambrée spéciale aux 3 malts.');
-        $product2->setProductPicture('product2.png');
+        $product2->setProductPicture('product2.jpg');
         $product2->setPrice(2.31);
         $product2->setStock(10);
         $product2->setSlug('Rousse-du-Mont-Blanc');
@@ -274,7 +274,7 @@ class AppFixtures extends Fixture
         $product3 = new Product();
         $product3->setProductName('Blonde du Mont-Blanc');
         $product3->setProductDescription('1 bouteille ou pack de 3, 6 ou 12 bouteilles de bière blonde du Mont-Blanc. Brasserie de Mont-Blanc.<br>Bière brassée en Savoie.<br>Bière de dégustation : Malts et épices.');
-        $product3->setProductPicture('product3.png');
+        $product3->setProductPicture('product3.jpg');
         $product3->setPrice(3.30);
         $product3->setStock(5);
         $product3->setSlug('Blonde-du-Mont-Blanc');
@@ -717,7 +717,7 @@ class AppFixtures extends Fixture
 
 
         //ProductFactory::new()->createMany(100);
-        
+
         for($i=0; $i<100; $i++){
 
             $id = 'product' . rand(1, 39);
