@@ -22,7 +22,7 @@
                         <li class="list-group-item">Prénom : {{ user.firstname }}</li>
                         <li class="list-group-item">Nom : {{ user.lastname }}</li>
                         <li class="list-group-item">Email : {{ user.email }}</li>
-                        <li class="list-group-item">Adresse : {{ user.userAddress }}</li>
+                        <li class="list-group-item">Adresse : {{ user.userAddress|raw }}</li>
                         <li class="list-group-item">Code postal : {{ user.postalCode }}</li>
                         <li class="list-group-item">Téléphone : {{ user.userPhone }}</li>
                     </ul>
@@ -37,8 +37,8 @@
                     <h5 class="card-title">Information de votre compte </h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Nom de la boutique : {{ shopDetail.shopName }}</li>
-                        <li class="list-group-item">Description de la boutique : {{ shopDetail.shopDescription }}</li>
-                        <li class="list-group-item">Adresse de la boutique : {{ shopDetail.shopAddress }}</li>
+                        <li class="list-group-item">Description de la boutique : {{ shopDetail.shopDescription|raw }}</li>
+                        <li class="list-group-item">Adresse de la boutique : {{ shopDetail.shopAddress|raw }}</li>
                         <li class="list-group-item">Département : {{ province }}</li>
                         <li class="list-group-item">Code postal : {{ user.postalCode }}</li>
                         <li class="list-group-item">Téléphone de la boutique : {{ shopDetail.shopPhone }}</li>

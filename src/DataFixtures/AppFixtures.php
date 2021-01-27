@@ -78,7 +78,7 @@ class AppFixtures extends Fixture
 
         // PROVINCE
         $province1 = new Province();
-        $province1->setProvinceName('Rhônes');
+        $province1->setProvinceName('Rhône');
         $manager->persist($province1);
 
         $province2 = new Province();

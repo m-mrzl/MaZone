@@ -7,7 +7,7 @@
 
     <!--  formulaire de recherche par Category et province -->
 
-        <div class="col-10 col-lg-4 mx-5 mt-3 mb-2 mx-auto bg-dark text-white p-3 rounded mt-2 shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="col-10 col-lg-4 mx-5 mt-3 mb-2 mx-auto bg-dark text-white p-3 rounded mt-2 shadow-lg p-3 mb-5 rounded">
             <h3>Nouvelle recherche</h3>
             <div  class="mx-2 ">
                 {{ form_start(form) }}
@@ -37,7 +37,7 @@
                     <img src="{{ asset_product_image(product.productPicture) }}" id="imgSearch" class="card-img-top" alt="{{ product.productName }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.productName }}</h5>
-                        <p class="card-text">{{ product.productDescription|slice(0, 100) }}...</p>
+                        <p class="card-text">{{ product.productDescription|slice(0, 100)|raw }}...</p>
                         <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>
                         <a class="btn btn-dark " href="{{ path('cart.add', {'id':product.id}) }}" title="Ajouter le produit" ><i class="bi bi-basket3-fill"></i></a>
                     </div>

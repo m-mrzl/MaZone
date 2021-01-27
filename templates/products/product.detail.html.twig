@@ -12,7 +12,7 @@
                     <div class="mt-">
                         <h2>Coordonnées</h2>
                         <address>
-                            <span>Adresse : {{ productDetail.shop.shopAddress }}</span><br>
+                            <span>Adresse : {{ productDetail.shop.shopAddress|raw }}</span><br>
                             <span>Ouvert : 7j/j de 09h à 13h et de 14h à 20h</span><br>
                             <span>Téléphone : {{ productDetail.shop.shopPhone }}</span><br>
                             <span>Email : {{ productDetail.shop.user.email }}</span><br>
@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ productDetail.productName }}</h5>
                             <p class="card-text px-5 py-3">Description du produit :
-                                {{ productDetail.productDescription }}
+                                {{ productDetail.productDescription|raw }}
                             </p>
                             <div class="row">
                                 <div class="col-6">Prix : {{ productDetail.price }} € </div>

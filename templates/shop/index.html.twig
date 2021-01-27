@@ -16,7 +16,7 @@
                     <img src="{{ asset_product_image(productByShop.productPicture) }}" class="card-img-top" alt="{{ productByShop.productName }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ productByShop.productName }}</h5>
-                        <p class="card-text">{{ productByShop.productDescription|slice(0, 100) }}...</p>
+                        <p class="card-text">{{ productByShop.productDescription|slice(0, 100)|raw }}...</p>
                         <a href="{{ path('product.detail.index', {'id':productByShop.id}) }}" class="btn btn-primary">Voir le produit</a>
                     </div>
                 </div>

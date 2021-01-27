@@ -26,9 +26,10 @@
 
                         <!-- text de présentation du site -->
                         <div class="col-lg-6 d-flex d-none d-lg-block " >
-                            <p class="text-start  ">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex maxime enim temporibus necessitatibus repudiandae voluptatum aliquam animi? Numquam aut, itaque a dicta ullam veritatis ipsa quo, quae sed facere quas repudiandae assumenda ex, nobis expedita voluptatem totam ad nesciunt nihil.
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis maiores nesciunt, laboriosam omnis pariatur ad quos nobis? Sapiente voluptatum sed sint rerum libero autem ab aliquam debitis cumque nihil corrupti, facere veritatis quasi harum magni qui quam ullam in quisquam!
+                            <p class="text-start">
+                                L’idée du projet est née suite aux évènements liés à la situation de crise économique et sanitaire (COVID). Les mesures de confinement et de couvre-feu ont renvoyé bon nombre de français chez eux, dans l’impossibilité pour certains de travailler et pour d’autres l’inactivité de leur commerce (restaurant, commerces etc..) qui sont passés directement à un état de précarité sévère jusqu’à la fermeture définitive de ceux-ci.<br> En effet, l’idée de pouvoir mettre en place un e-commerce qui aurait le rôle d’intermédiaire entre les commerçants et les consommateurs était devenue plus que nécessaire.
+                                Comme nous le savons, tous les commerçants n’ont pas forcément de site internet ni de visibilité, l’idée de pouvoir leur offrir une page vitrine sur notre site était non seulement essentielle mais aussi rentable pour ces derniers en sachant les coûts pour la création d’un site et sa gestion sur le long terme notamment en cette grave période de crise.
+
                             </p>
                         </div>
                         <div class="d-lg-none ">
@@ -40,8 +41,8 @@
                             <div class="collapse col-10 mx-auto " id="collapseExample">
                                 <div class="card card-body " id="color">
                                     <p class="text-start ">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex maxime enim temporibus necessitatibus repudiandae voluptatum aliquam animi? Numquam aut, itaque a dicta ullam veritatis ipsa quo, quae sed facere quas repudiandae assumenda ex, nobis expedita voluptatem totam ad nesciunt nihil.
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis maiores nesciunt, laboriosam omnis pariatur ad quos nobis? Sapiente voluptatum sed sint rerum libero autem ab aliquam debitis cumque nihil corrupti, facere veritatis quasi harum magni qui quam ullam in quisquam!
+                                        L’idée du projet est née suite aux évènements liés à la situation de crise économique et sanitaire (COVID). Les mesures de confinement et de couvre-feu ont renvoyé bon nombre de français chez eux, dans l’impossibilité pour certains de travailler et pour d’autres l’inactivité de leur commerce (restaurant, commerces etc..) qui sont passés directement à un état de précarité sévère jusqu’à la fermeture définitive de ceux-ci.<br> En effet, l’idée de pouvoir mettre en place un e-commerce qui aurait le rôle d’intermédiaire entre les commerçants et les consommateurs était devenue plus que nécessaire.
+                                        Comme nous le savons, tous les commerçants n’ont pas forcément de site internet ni de visibilité, l’idée de pouvoir leur offrir une page vitrine sur notre site était non seulement essentielle mais aussi rentable pour ces derniers en sachant les coûts pour la création d’un site et sa gestion sur le long terme notamment en cette grave période de crise.
                                     </p>
                                 </div>
                             </div>
@@ -58,7 +59,7 @@
                         <img src="{{ asset_product_image(product.productPicture) }}" class="card-img-top img-fluid " id="imgHome" alt="{{ product.productName }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.productName }}</h5>
-                            <p class="card-text">{{ product.productDescription|slice(0, 70) }}...</p>
+                            <p class="card-text">{{ product.productDescription|slice(0, 70)|raw }}...</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item btn btn-outline-secondary"><a href="{{ path('category.index', {'id':product.category.id}) }}" class="text-decoration-none text-dark">{{ product.category.label|slice(0, 10) }}</a></li>
@@ -112,17 +113,17 @@
             <article class="row d-flex justify-content-center my-4">
                 <div id="carouselExampleControls" class="carousel slide col-10 col-lg-8 mt-4 shadow p-3 mb-5 bg-white rounded " data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        {% for product in products|slice(25, 5) %}
+                        {% for product in products|slice(0, 30) %}
                         <div class="carousel-item {%if loop.first%} active {%endif%}">
                             <div class="card " >
                                 <img src="{{ asset_product_image(product.productPicture) }}" id="imgCarou" class="card-img-top " alt="{{ product.productName }}">
                                 <div class="card-body text-center">
                                     <h5 class="card-title mb-3">{{ product.productName }}</h5>
-                                    <p class="card-text">{{ product.productDescription|slice(0, 200) }}...</p>
+                                    <p class="card-text">{{ product.productDescription|slice(0, 200)|raw }}...</p>
                                 </div>
                                 <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item btn btn-outline-secondary "><a href="{{ path('category.index', {'id':product.category.id}) }}" class="text-decoration-none text-dark">{{ product.category.label|slice(0, 10) }}</a></li>
-                                    <li class="list-group-item btn btn-outline-secondary"><a href="{{ path('province.index', {'id':product.province.id}) }}" class="text-decoration-none text-dark">{{ product.province.provinceName|slice(0, 10) }}</a></li>
+                                    <li class="list-group-item btn btn-outline-secondary "><a href="{{ path('category.index', {'id':product.category.id}) }}" class="text-decoration-none text-dark">{{ product.category.label }}</a></li>
+                                    <li class="list-group-item btn btn-outline-secondary"><a href="{{ path('province.index', {'id':product.province.id}) }}" class="text-decoration-none text-dark">{{ product.province.provinceName }}</a></li>
                                 </ul>
                                 <div class="card-body text-center">
                                     <a href="{{ path('product.detail.index', {'id':product.id}) }}" class="btn btn-primary">Voir le produit</a>

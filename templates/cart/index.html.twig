@@ -48,7 +48,7 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a href="#" class="btn btn-dark px-5" onclick="var aze=confirm('Page de paiement en cours de création');return aze;">Payez</a>
         {% else %}
-            <a href="{{ path('security.login') }}" class="btn btn-dark px-5" onclick="var aze=confirm('Êtes-vous sur de vouloir supprimer ce produit ?');return aze;">Payez</a>
+            <a href="{{ path('security.login') }}" class="btn btn-dark px-5">Payez</a>
         {% endif %}
     </div>
 
