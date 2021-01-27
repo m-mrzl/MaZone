@@ -82,11 +82,11 @@
 
             <!--  section Category et region -->
            <div class="shadow-lg p-3 mb-5 bg-white rounded">
-               <section class="row d-flex justify-content-center bg-dark pb-3 ">
+               <section class="row d-flex justify-content-center pb-3 " id="color">
 
                    <!-- 7 categories-->
                    <div class="col-lg-4 col-10">
-                       <h3 class="text-center mt-5 mb-4 text-white">Categories</h3>
+                       <h3 class="text-center mt-5 mb-4 text-secondary">Categories</h3>
                        <div class="row container-flex ">
                            {% for category in categories %}
                                <div class="d-grid gap-3 col-4 mb-2 d-flex justify-content-around">
@@ -98,7 +98,7 @@
 
                    <!-- 3 département -->
                    <div class="col-lg-4 col-10">
-                       <h3 class="text-center mt-5 mb-4 text-white">Département</h3>
+                       <h3 class="text-center mt-5 mb-4 text-secondary">Département</h3>
                        {% for province in provinces %}
                            <div class="d-grid gap-2 mb-2 ">
                                <a class="btn btn-outline-secondary" href="{{ path('province.index', {'id':province.id}) }}">{{ province.provinceName }}</a>
@@ -129,6 +129,7 @@
                                     <a class="btn btn-dark " href="{{ path('cart.add', {'id':product.id}) }}" title="Ajouter le produit" ><i class="bi bi-basket3-fill"></i></a>
                                 </div>
                                 <div class="text-center">
+                                    <h5 class="text-decoration-none text-dark ">Prix : <span class="badge bg-secondary"> {{ product.price }} € </span> </h5>
                                     <a class="text-decoration-none text-dark ">Il reste {{ product.stock }} produit(s) en stock.</a>
                                 </div>
                                 <div class="card-footer text-muted mt-2 text-center ">
